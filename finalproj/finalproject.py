@@ -28,4 +28,19 @@ for x in range (0,5):
     print (b, end="\r")
     time.sleep(1)
 
+playerName = input('ok, first, what is your name?')
+
 ## final battle setup
+
+class Fighter:
+
+    def __init__(self, hp,
+
+class Allies(Fighter):
+
+class Enemies(Fighter):
+
+allies = []
+enemies = []
+
+for x in allies:
