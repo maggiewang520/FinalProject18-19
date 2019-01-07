@@ -60,6 +60,14 @@ class Youtuber(Fighter):
         self.atkCoeff += 1
         print(f"{self.name}'s attack power is now {self.atkCoeff}")
 
+    def loseSubs(self):
+        print(f"{self.name} was racist and sexist and lost subscribers")
+        self.subscribers -= 1000000
+        print(f"{self.name}'s subscriber count is now {self.subscribers}")
+        print(f"this also makes {self.name} weaker")
+        self.atkCoeff -= 1
+        print(f"{self.name}'s attack power is now {self.atkCoeff}")
+
     def stats(self):
         print(f"these are the stats of {self.name}")
         print(f"species: {self.species}")
@@ -80,6 +88,14 @@ class Celeb(Fighter):
         print(f"{self.name}'s net worth is now {self.networth}")
         print(f"this also makes {self.name} more powerful")
         self.atkCoeff += 1
+        print(f"{self.name}'s attack power is now {self.atkCoeff}")
+
+    def loseMoney(self):
+        print(f"{self.name} screwed up and lost the dough")
+        self.networth -= 1000000
+        print(f"{self.name}'s net worth is now {self.networth}")
+        print(f"this also makes {self.name} weaker")
+        self.atkCoeff -= 1
         print(f"{self.name}'s attack power is now {self.atkCoeff}")
 
     def stats(self):
