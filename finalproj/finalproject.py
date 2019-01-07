@@ -6,7 +6,7 @@ print ( "welcome, bienvenido, benvenuto, bem vinda, 欢迎, ようこそ, to Mag
 time.sleep(1)
 print('you will embark on the ultimate adventure around LA')
 time.sleep(2)
-print( 'you will be exploring important landmarks - and by that I mean the houses of hot celebrities and youtubers')
+print( 'you will be exploring important landmarks throughout LA - such as Youtubers houses')
 time.sleep(1)
 print( 'and collecting allies, items, and more along the way')
 time.sleep(3)
@@ -34,13 +34,45 @@ playerName = input('ok, first, what is your name?')
 
 class Fighter:
 
-    def __init__(self, hp,
+    def __init__(self, name, species, health, atkCoeff, defCoeff):
+        self.name = name
+        self.species = species
+        self.health = health
+        self.atkCoeff = atkCoeff
+        self.defCoeff = defCoeff
 
-class Allies(Fighter):
+    def eat(self):
+        print(f"{self.name} ate the food and increased their health")
+        self.health += 20
+        print(f"{self.name}'s health is now {self.health}")
 
-class Enemies(Fighter):
+class Youtuber(Fighter):
+
+    def __init__(self, name, species, health, atkCoeff, defCoeff, subscribers):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
+        self.subscribers = subscribers
+
+    def gainSubs(self):
+        print(f"{self.name} posted a diss track and gained subscribers!")
+        self.subscribers += 100000
+        print(f"{self.name}'s subscriber count is now {self.subscribers}")
+        print(f"this also makes {self.name} more powerful")
+        self.atkCoeff += 1
+        print(f"{self.name}'s attack power is now {self.atkCoeff}")
+
+class Celeb(Fighter):
+
+    def __init__(self, species, health, atkCoeff, defCoeff, networth):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
+        self.networth = networth
+
+    def makeMoney(self):
+        print(f"{self.name} put out a new movie or song and acquired the dough!")
+        self.networth += 1000000
+        print(f"{self.name}'s net worth is now {self.networth}")
+        print(f"this also makes {self.name} more powerful")
+        self.atkCoeff += 1
+        print(f"{self.name}'s attack power is now {self.atkCoeff}")
 
 allies = []
 enemies = []
-
-for x in allies:
