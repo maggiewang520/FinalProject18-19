@@ -17,7 +17,7 @@ time.sleep(2)
 
 start = input( 'are you ready to begin the adventure?! ')
 
-if start == 'yes' or 'y' or 'sure' or 'yeah' or 'ye' or 'yeet':
+if start == 'yes':
     print("of course you are. I expected no less of you. let's gooo")
 else:
     print("welp. too bad. we are starting anyway")
@@ -60,9 +60,17 @@ class Youtuber(Fighter):
         self.atkCoeff += 1
         print(f"{self.name}'s attack power is now {self.atkCoeff}")
 
+    def stats(self):
+        print(f"these are the stats of {self.name}")
+        print(f"species: {self.species}")
+        print(f"health: {self.health}")
+        print(f"attack power: {self.atkCoeff}")
+        print(f"defense power: {self.defCoeff}")
+        print(f"subscribers: {self.subscribers}")
+
 class Celeb(Fighter):
 
-    def __init__(self, species, health, atkCoeff, defCoeff, networth):
+    def __init__(self, name, species, health, atkCoeff, defCoeff, networth):
         Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
         self.networth = networth
 
@@ -74,5 +82,29 @@ class Celeb(Fighter):
         self.atkCoeff += 1
         print(f"{self.name}'s attack power is now {self.atkCoeff}")
 
+    def stats(self):
+        print(f"these are the stats of {self.name}")
+        print(f"species: {self.species}")
+        print(f"health: {self.health}")
+        print(f"attack power: {self.atkCoeff}")
+        print(f"defense power: {self.defCoeff}")
+        print(f"net worth: {self.networth}")
+
+ksi = Youtuber(
+lpaul = Youtuber(
+jpaul = Youtuber(
+pew = Youtuber(
+shane = Youtuber(
+jstar = Youtuber(
+jcharles = Youtuber(
+ddobrik = Youtuber(
+agrande = Celeb(
+kimk = Celeb(
+kylie = Celeb(
+rih = Celeb(
+
 allies = []
 enemies = []
+
+attacks = { }
+defenses = { }
