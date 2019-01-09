@@ -129,5 +129,3 @@ allatks = { }
 alldefs = { }
 
 ## adventure begins
-
-
