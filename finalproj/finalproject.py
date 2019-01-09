@@ -34,13 +34,12 @@ playerName = input('ok, first, what is your name?')
 
 class Fighter:
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, excl):
+    def __init__(self, name, species, health, atkCoeff, defCoeff):
         self.name = name
         self.species = species
         self.health = health
         self.atkCoeff = atkCoeff
         self.defCoeff = defCoeff
-        self.excl = excl
 
     def eat(self):
         print(f"{self.name} ate the food and increased their health")
@@ -49,8 +48,8 @@ class Fighter:
 
 class Youtuber(Fighter):
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, excl, subscribers):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, excl)
+    def __init__(self, name, species, health, atkCoeff, defCoeff, subscribers):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
         self.subscribers = subscribers
 
     def stats(self):
@@ -79,8 +78,8 @@ class Youtuber(Fighter):
 
 class Celeb(Fighter):
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, excl, networth):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, excl)
+    def __init__(self, name, species, health, atkCoeff, defCoeff, networth):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
         self.networth = networth
 
     def stats(self):
@@ -126,8 +125,9 @@ kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 80, 2, 2, 900000000)
 allies = []
 enemies = []
 
-attacks = { }
-defenses = { }
+allatks = { }
+alldefs = { }
 
-ksi.stats()
-kimk.stats()
+## adventure begins
+
+
