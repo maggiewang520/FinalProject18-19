@@ -34,12 +34,13 @@ playerName = input('ok, first, what is your name?')
 
 class Fighter:
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff):
+    def __init__(self, name, species, health, atkCoeff, defCoeff, excl):
         self.name = name
         self.species = species
         self.health = health
         self.atkCoeff = atkCoeff
         self.defCoeff = defCoeff
+        self.excl = excl
 
     def eat(self):
         print(f"{self.name} ate the food and increased their health")
@@ -48,9 +49,17 @@ class Fighter:
 
 class Youtuber(Fighter):
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, subscribers):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
+    def __init__(self, name, species, health, atkCoeff, defCoeff, excl, subscribers):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, excl)
         self.subscribers = subscribers
+
+    def stats(self):
+        print(f"these are the stats of {self.name}")
+        print(f"species: {self.species}")
+        print(f"health: {self.health}")
+        print(f"attack power: {self.atkCoeff}")
+        print(f"defense power: {self.defCoeff}")
+        print(f"subscribers: {self.subscribers}")
 
     def gainSubs(self):
         print(f"{self.name} posted a diss track and gained subscribers!")
@@ -68,19 +77,19 @@ class Youtuber(Fighter):
         self.atkCoeff -= 1
         print(f"{self.name}'s attack power is now {self.atkCoeff}")
 
+class Celeb(Fighter):
+
+    def __init__(self, name, species, health, atkCoeff, defCoeff, excl, networth):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, excl)
+        self.networth = networth
+
     def stats(self):
         print(f"these are the stats of {self.name}")
         print(f"species: {self.species}")
         print(f"health: {self.health}")
         print(f"attack power: {self.atkCoeff}")
         print(f"defense power: {self.defCoeff}")
-        print(f"subscribers: {self.subscribers}")
-
-class Celeb(Fighter):
-
-    def __init__(self, name, species, health, atkCoeff, defCoeff, networth):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
-        self.networth = networth
+        print(f"net worth: {self.networth}")
 
     def makeMoney(self):
         print(f"{self.name} put out a new movie or song and acquired the dough!")
@@ -98,29 +107,27 @@ class Celeb(Fighter):
         self.atkCoeff -= 1
         print(f"{self.name}'s attack power is now {self.atkCoeff}")
 
-    def stats(self):
-        print(f"these are the stats of {self.name}")
-        print(f"species: {self.species}")
-        print(f"health: {self.health}")
-        print(f"attack power: {self.atkCoeff}")
-        print(f"defense power: {self.defCoeff}")
-        print(f"net worth: {self.networth}")
 
-ksi = Youtuber(
-lpaul = Youtuber(
-jpaul = Youtuber(
-pew = Youtuber(
-shane = Youtuber(
-jstar = Youtuber(
-jcharles = Youtuber(
-ddobrik = Youtuber(
-agrande = Celeb(
-kimk = Celeb(
-kylie = Celeb(
-rih = Celeb(
+ksi = Youtuber( 'KSI', 'the devil himself', 50, 2, 1, 19921956)
+lpaul = Youtuber( 'Logan Paul', 'chungus', 60, 1, 2, 18773617)
+
+jpaul = Youtuber( 'Jake Paul', 'chungus jr.', 40, 1.5, 1, 17709933)
+shane = Youtuber( 'Shane Dawson', 'illuminati himself', 70, 2, 2.5, 19733606)
+
+pew = Youtuber( 'PewdiePie', 'swedish lasagna', 90, 3, 3, 80278892)
+tseries = Youtuber( 'T-Series', 't-gay', 70, 2, 2, 79593540)
+
+jstar = Youtuber( 'Jeffree Star', 'definitely not human', 70, 2, 1.5, 12110610)
+jcharles = Youtuber( 'James Charles', 'sister', 80, 1.5, 2, 13114500)
+
+kimk = Celeb( 'Kim Kardashian', 'birth giver', 60, 1.5, 2, 350000000)
+kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 80, 2, 2, 900000000)
 
 allies = []
 enemies = []
 
 attacks = { }
 defenses = { }
+
+ksi.stats()
+kimk.stats()
