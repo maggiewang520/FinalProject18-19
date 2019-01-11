@@ -175,7 +175,7 @@ time.sleep(1)
 dest1 = 'team 10 house'
 char1 = [ jpaul, shane ]
 dest2 = 'supreme store'
-char2 = [ ksi, jpaul ]
+char2 = [ ksi, lpaul ]
 dest3 = 'sephora'
 char3 = [ jstar, jcharles ]
 dest4 = 'kardashian/jenner household'
@@ -215,12 +215,14 @@ def chooseAlly( dest ):
     print(f"you can only pick one to be your ally, and the other one will automatically be placed in the enemy team" )
     time.sleep(1)
     yourally = input(f"would you like {chars[0]} to be your ally or {chars[1]}?")
-    allies.append(yourally)
-    if yourally == chars[0]:
-        yourenemy = f"{chars[1]}"
-    elif yourally == chars[1]:
-        yourenemy = f"chars[0]"
-    enemies.append(yourenemy)
+    if yourally == chars[0].name :
+        allies.append(chars[0])
+        yourenemy = chars[1]
+        enemies.append(chars[1])
+    elif yourally == chars[1].name :
+        allies.append(chars[1])
+        yourenemy = chars[0]
+        enemies.append(chars[0])
     print(f"{yourally} is now your new friend and {yourenemy} is so offended you chose {yourally} over them that they hate you")
     time.sleep(1)
     displayTeams()
