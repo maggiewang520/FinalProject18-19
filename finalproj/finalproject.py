@@ -185,7 +185,7 @@ char5 = [ pew, tseries ]
 
 def whereToYeet( place1, place2 ):
     global dest
-    dest = input(f"where would you like to go first? choose either '{place1}' or '{place2}' " )
+    dest = input(f"where would you like to go? choose either '{place1}' or '{place2}' " )
     time.sleep(1)
     print(f"okay, we are yeeting to {dest} now.")
     time.sleep(1)
@@ -194,7 +194,6 @@ def whereToYeet( place1, place2 ):
         print (b, end="\r")
         time.sleep(1)
     print(f"we have arrived in {dest}!")
-    return
 
 def displayTeams():
     print("these are your allies")
@@ -204,11 +203,11 @@ def displayTeams():
     print("and these are your enemies")
     time.sleep(1)
     print(*enemies, sep = "\n")
-    return
 
-def chooseAlly( dest ):
+def chooseAlly( ):
     global yourally
     global yourenemy
+    global chars
     time.sleep(1)
     print(f"at {dest}, you come accross {chars[0]} and {chars[1]}")
     time.sleep(1)
@@ -226,29 +225,31 @@ def chooseAlly( dest ):
     print(f"{yourally} is now your new friend and {yourenemy} is so offended you chose {yourally} over them that they hate you")
     time.sleep(1)
     displayTeams()
-    return
 
-def collectAllies( dest ):
+def collectAllies( ):
     global chars
+    global dest
     if dest == dest1:
         chars = char1
-        chooseAlly( dest )
+        chooseAlly( )
     elif dest == dest2:
         chars = char2
-        chooseAlly( dest )
+        chooseAlly( )
     elif dest == dest3:
         chars == char3
-        chooseAlly( dest )
+        chooseAlly( )
     elif dest == dest4:
         chars == char4
-        chooseAlly( dest )
+        chooseAlly( )
     elif dest == dest5:
         chars = char5
-        chooseAlly( dest )
-    return
+        chooseAlly( )
 
 time.sleep(1)
 print(f"it's already time to go to our first destination.")
 time.sleep(1)
 whereToYeet( dest1, dest2 )
-collectAllies( dest )
+collectAllies( )
+
+whereToYeet( dest3, dest4 )
+collectAllies( )
