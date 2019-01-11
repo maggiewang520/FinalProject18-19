@@ -5,12 +5,10 @@ import time
 print ( "welcome, bienvenido, benvenuto, bem vinda, 欢迎, ようこそ, to Maggie's final project")
 time.sleep(1)
 print('you will embark on the ultimate adventure around LA')
-time.sleep(2)
-print( 'you will be exploring important landmarks throughout LA - such as Youtubers houses')
 time.sleep(1)
-print( 'and collecting allies, items, and more along the way')
+print( 'and you will collect allies, items, and more along the way')
 time.sleep(3)
-print( 'this is all in preparation for an ePiC battle at the end')
+print( 'this is all in preparation for an epic battle at the end')
 time.sleep(2)
 print( "and here is a little bit of good luck from me cuz you'll need it")
 time.sleep(2)
@@ -18,7 +16,7 @@ time.sleep(2)
 start = input( 'are you ready to begin the adventure?! ')
 
 if start == 'yes':
-    print("of course you are. I expected no less of you. let's gooo")
+    print("of course you are. I expected no less of you. let's go")
 else:
     print("welp. too bad. we are starting anyway")
 
@@ -28,7 +26,7 @@ for x in range (0,5):
     print (b, end="\r")
     time.sleep(1)
 
-playerName = input('ok, first, what is your name?')
+playerName = input('ok, first, what is your name? ')
 
 ## final battle setup
 
@@ -45,6 +43,11 @@ class Fighter:
         print(f"{self.name} ate the food and increased their health")
         self.health += 20
         print(f"{self.name}'s health is now {self.health}")
+
+    def __str__(self):
+        return self.name
+
+    __repr__ = __str__
 
 class Youtuber(Fighter):
 
@@ -125,7 +128,125 @@ kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 80, 2, 2, 900000000)
 allies = []
 enemies = []
 
-allatks = { }
-alldefs = { }
+set1 = {
+    'attacks': {
+        'attack1': 5,
+        'attack2': 3,
+        'attack3': 4
+    },
+    'defenses': {
+        'defense1': 5,
+        'defense2': 4,
+        'defense3': 3
+    }
+}
+
+set2 = {
+    'attacks': {
+        'attack1': 5,
+        'attack2': 3,
+        'attack3': 4
+    },
+    'defenses': {
+        'defense1': 5,
+        'defense2': 4,
+        'defense3': 3
+    }
+}
+
+set3 = {
+    'attacks': {
+        'attack1': 5,
+        'attack2': 3,
+        'attack3': 4
+    },
+    'defenses': {
+        'defense1': 5,
+        'defense2': 4,
+        'defense3': 3
+    }
+}
 
 ## adventure begins
+
+print(f"welcome, {playerName}. you have just arrived in LAX...")
+time.sleep(1)
+
+dest1 = 'team 10 house'
+char1 = [ jpaul, shane ]
+dest2 = 'supreme store'
+char2 = [ ksi, jpaul ]
+dest3 = 'sephora'
+char3 = [ jstar, jcharles ]
+dest4 = 'kardashian/jenner household'
+char4 = [ kylie, kimk ]
+dest5 = 'hotel'
+char5 = [ pew, tseries ]
+
+def whereToYeet( place1, place2 ):
+    global dest
+    dest = input(f"where would you like to go first? choose either '{place1}' or '{place2}' " )
+    time.sleep(1)
+    print(f"okay, we are yeeting to {dest} now.")
+    time.sleep(1)
+    for x in range (0,5):
+        b = "Transporting" + "." * x
+        print (b, end="\r")
+        time.sleep(1)
+    print(f"we have arrived in {dest}!")
+    return
+
+def displayTeams():
+    print("these are your allies")
+    time.sleep(1)
+    print(*allies, sep = "\n")
+    time.sleep(1)
+    print("and these are your enemies")
+    time.sleep(1)
+    print(*enemies, sep = "\n")
+    return
+
+def chooseAlly( dest ):
+    global yourally
+    global yourenemy
+    time.sleep(1)
+    print(f"at {dest}, you come accross {chars[0]} and {chars[1]}")
+    time.sleep(1)
+    print(f"you can only pick one to be your ally, and the other one will automatically be placed in the enemy team" )
+    time.sleep(1)
+    yourally = input(f"would you like {chars[0]} to be your ally or {chars[1]}?")
+    allies.append(yourally)
+    if yourally == chars[0]:
+        yourenemy = f"{chars[1]}"
+    elif yourally == chars[1]:
+        yourenemy = f"chars[0]"
+    enemies.append(yourenemy)
+    print(f"{yourally} is now your new friend and {yourenemy} is so offended you chose {yourally} over them that they hate you")
+    time.sleep(1)
+    displayTeams()
+    return
+
+def collectAllies( dest ):
+    global chars
+    if dest == dest1:
+        chars = char1
+        chooseAlly( dest )
+    elif dest == dest2:
+        chars = char2
+        chooseAlly( dest )
+    elif dest == dest3:
+        chars == char3
+        chooseAlly( dest )
+    elif dest == dest4:
+        chars == char4
+        chooseAlly( dest )
+    elif dest == dest5:
+        chars = char5
+        chooseAlly( dest )
+    return
+
+time.sleep(1)
+print(f"it's already time to go to our first destination.")
+time.sleep(1)
+whereToYeet( dest1, dest2 )
+collectAllies( dest )
