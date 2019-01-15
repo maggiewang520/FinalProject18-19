@@ -57,11 +57,17 @@ class Youtuber(Fighter):
 
     def stats(self):
         print(f"these are the stats of {self.name}")
-        print(f"species: {self.species}")
-        print(f"health: {self.health}")
-        print(f"attack power: {self.atkCoeff}")
-        print(f"defense power: {self.defCoeff}")
-        print(f"subscribers: {self.subscribers}")
+        time.sleep(1)
+        print(f" - species: {self.species}")
+        time.sleep(1)
+        print(f" - health: {self.health}")
+        time.sleep(1)
+        print(f" - attack power: {self.atkCoeff}")
+        time.sleep(1)
+        print(f" - defense power: {self.defCoeff}")
+        time.sleep(1)
+        print(f" - subscribers: {self.subscribers}")
+        time.sleep(1)
 
     def gainSubs(self):
         print(f"{self.name} posted a diss track and gained subscribers!")
@@ -87,11 +93,17 @@ class Celeb(Fighter):
 
     def stats(self):
         print(f"these are the stats of {self.name}")
-        print(f"species: {self.species}")
-        print(f"health: {self.health}")
-        print(f"attack power: {self.atkCoeff}")
-        print(f"defense power: {self.defCoeff}")
-        print(f"net worth: {self.networth}")
+        time.sleep(1)
+        print(f" - species: {self.species}")
+        time.sleep(1)
+        print(f" - health: {self.health}")
+        time.sleep(1)
+        print(f" - attack power: {self.atkCoeff}")
+        time.sleep(1)
+        print(f" - defense power: {self.defCoeff}")
+        time.sleep(1)
+        print(f" - net worth: {self.networth}")
+        time.sleep(1)
 
     def makeMoney(self):
         print(f"{self.name} put out a new movie or song and acquired the dough!")
@@ -172,84 +184,82 @@ set3 = {
 print(f"welcome, {playerName}. you have just arrived in LAX...")
 time.sleep(1)
 
-dest1 = 'team 10 house'
-char1 = [ jpaul, shane ]
-dest2 = 'supreme store'
-char2 = [ ksi, lpaul ]
-dest3 = 'sephora'
-char3 = [ jstar, jcharles ]
-dest4 = 'kardashian/jenner household'
-char4 = [ kylie, kimk ]
-dest5 = 'hotel'
-char5 = [ pew, tseries ]
+dests = {
+    'team 10 house': [jpaul, shane],
+    'supreme store': [ksi, lpaul],
+    'sephora': [jstar, jcharles],
+    'jenner house': [kimk, kylie],
+    'hotel': [pew, tseries]
+     }
 
-def whereToYeet( place1, place2 ):
-    global dest
-    dest = input(f"where would you like to go? choose either '{place1}' or '{place2}' " )
+available_dests = list(dests.keys())
+
+def displaydests( ):
+    global available_dests
+    time.sleep(1)
+    print("these are all the destinations that are available")
+    print(*available_dests, sep = ", ")
+
+def whereToYeet( alldests ):
+    global available_dests
+    displaydests()
+    dest = input(f"where would you like to go? choose one of the valid destinations " )
+    while dest not in alldests:
+        dest = input(f"please choose one of the valid destinations: {available_dests} " )
     time.sleep(1)
     print(f"okay, we are yeeting to {dest} now.")
+    available_dests.remove(dest)
     time.sleep(1)
     for x in range (0,5):
         b = "Transporting" + "." * x
         print (b, end="\r")
         time.sleep(1)
     print(f"we have arrived in {dest}!")
+    return dest
 
 def displayTeams():
     print("these are your allies")
     time.sleep(1)
-    print(*allies, sep = "\n")
+    print(*allies, sep = ", ")
     time.sleep(1)
     print("and these are your enemies")
     time.sleep(1)
-    print(*enemies, sep = "\n")
+    print(*enemies, sep = ", ")
 
-def chooseAlly( ):
-    global yourally
-    global yourenemy
-    global chars
+def chooseAlly( place ):
     time.sleep(1)
-    print(f"at {dest}, you come accross {chars[0]} and {chars[1]}")
+    print(f"at {place}, you come accross {dests[place][0]} and {dests[place][1]} hanging out together")
     time.sleep(1)
     print(f"you can only pick one to be your ally, and the other one will automatically be placed in the enemy team" )
     time.sleep(1)
-    yourally = input(f"would you like {chars[0]} to be your ally or {chars[1]}?")
-    if yourally == chars[0].name :
-        allies.append(chars[0])
-        yourenemy = chars[1]
-        enemies.append(chars[1])
-    elif yourally == chars[1].name :
-        allies.append(chars[1])
-        yourenemy = chars[0]
-        enemies.append(chars[0])
+    print(f"you will now see the stats of {dests[place][0]} and {dests[place][1]} to decide")
+    time.sleep(1)
+    dests[place][0].stats()
+    time.sleep(1)
+    dests[place][1].stats()
+    time.sleep(2)
+    yourally = input(f"Choose an ally from {place}: {dests[place][0]} or {dests[place][1]} ")
+    yourenemy = ""
+    if yourally == dests[place][0].name :
+        allies.append(dests[place][0])
+        yourenemy = dests[place][1]
+        enemies.append(dests[place][1])
+    elif yourally == dests[place][1].name :
+        allies.append(dests[place][1])
+        yourenemy = dests[place][0]
+        enemies.append(dests[place][0])
     print(f"{yourally} is now your new friend and {yourenemy} is so offended you chose {yourally} over them that they hate you")
     time.sleep(1)
     displayTeams()
 
-def collectAllies( ):
-    global chars
-    global dest
-    if dest == dest1:
-        chars = char1
-        chooseAlly( )
-    elif dest == dest2:
-        chars = char2
-        chooseAlly( )
-    elif dest == dest3:
-        chars == char3
-        chooseAlly( )
-    elif dest == dest4:
-        chars == char4
-        chooseAlly( )
-    elif dest == dest5:
-        chars = char5
-        chooseAlly( )
-
 time.sleep(1)
 print(f"it's already time to go to our first destination.")
 time.sleep(1)
-whereToYeet( dest1, dest2 )
-collectAllies( )
+chooseAlly(whereToYeet(available_dests))
 
-whereToYeet( dest3, dest4 )
-collectAllies( )
+while len(available_dests) >= 1:
+    time.sleep(1)
+    print(f"okay, next destination")
+    time.sleep(1)
+    chooseAlly(whereToYeet(available_dests))
+    time.sleep(1)
