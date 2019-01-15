@@ -140,45 +140,6 @@ kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 80, 2, 2, 900000000)
 allies = []
 enemies = []
 
-set1 = {
-    'attacks': {
-        'attack1': 5,
-        'attack2': 3,
-        'attack3': 4
-    },
-    'defenses': {
-        'defense1': 5,
-        'defense2': 4,
-        'defense3': 3
-    }
-}
-
-set2 = {
-    'attacks': {
-        'attack1': 5,
-        'attack2': 3,
-        'attack3': 4
-    },
-    'defenses': {
-        'defense1': 5,
-        'defense2': 4,
-        'defense3': 3
-    }
-}
-
-set3 = {
-    'attacks': {
-        'attack1': 5,
-        'attack2': 3,
-        'attack3': 4
-    },
-    'defenses': {
-        'defense1': 5,
-        'defense2': 4,
-        'defense3': 3
-    }
-}
-
 ## adventure begins
 
 print(f"welcome, {playerName}. you have just arrived in LAX...")
@@ -202,10 +163,12 @@ def displaydests( ):
 
 def whereToYeet( alldests ):
     global available_dests
+    print(f"so, {playerName}, where would you like to go?")
     displaydests()
-    dest = input(f"where would you like to go? choose one of the valid destinations " )
+    dest = input(f"choose one of the valid destinations listed above " )
     while dest not in alldests:
-        dest = input(f"please choose one of the valid destinations: {available_dests} " )
+        displaydests()
+        dest = input(f"please choose a valid destination " )
     time.sleep(1)
     print(f"okay, we are yeeting to {dest} now.")
     available_dests.remove(dest)
@@ -264,4 +227,13 @@ while len(available_dests) >= 1:
     chooseAlly(whereToYeet(available_dests))
     time.sleep(1)
 
+print(f"ok. now that you have collected all your allies and formed two teams,")
+time.sleep(1)
+print(f"it is time to look around for attack and defense items to fight with")
+time.sleep(1)
+
 ##  to do: print empty lines to organize game
+
+attack_items = { }
+
+defense_items = { }
