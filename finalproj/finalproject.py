@@ -263,3 +263,5 @@ while len(available_dests) >= 1:
     time.sleep(1)
     chooseAlly(whereToYeet(available_dests))
     time.sleep(1)
+
+##  to do: print empty lines to organize game
