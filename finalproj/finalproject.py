@@ -1,6 +1,6 @@
 import time
 
-##intro
+## introduction to game
 
 print ( "welcome, bienvenido, benvenuto, bem vinda, 欢迎, ようこそ, to Maggie's final project")
 print()
@@ -30,7 +30,7 @@ for x in range (0,5):
 
 playerName = input('ok, first, what is your name? ')
 
-## battle setup + etc
+## character setup and collection
 
 class Fighter:
 
@@ -232,17 +232,17 @@ while len(available_dests) >= 1:
 
 class Item():
 
-    def __init__(self, name, type, power, use):
+    def __init__(self, name, itemtype, power, use):
         self.name = name
-        self.type = type
+        self.itemtype = itemtype
         self.power = power
         self.use = use
 
     def showstats(self):
         print()
-        print(f"these are the stats of {self.name}")
-        print(f" - type : {self.type}")
-        print(f" - {self.type} power : {self.power}")
+        print(f"these are the stats of '{self.name}' : ")
+        print(f" - type : {self.itemtype}")
+        print(f" - {self.itemtype} power : {self.power}")
         print(f" - number of uses : {self.use}")
         print()
 
@@ -251,9 +251,61 @@ class Item():
 
     __repr__ = __str__
 
-ds = Item('diss track', 'attack', 10, 1)
-exp = Item('expose for racism', 'attack', 15, 1)
+ds = Item('diss track', 'attack', 10, 2)
+exp = Item('expose for racism', 'attack', 18, 1)
+call = Item('call out for scamming fans', 'attack', 10, 1)
+twit = Item('taking it to twitter', 'attack', 6, 2)
 
+fake = Item('fake apology', 'defense', 4, 2)
+disapp = Item('disappear off the internet', 'defense', 6, 1)
+exc = Item('making bad excuses', 'defense', 6, 2)
+proof = Item('disproving rumors with proof', 'defense', 10, 1)
+
+avail_attacks = [ ds, exp, call, twit ]
+avail_defenses = [ fake, disapp, exc, proof ]
+
+your_attacks = [ ]
+your_defenses = [ ]
+
+def display_items():
+    print("these are the attacks available to you")
+    time.sleep(1)
+    print(*your_attacks, sep = ", ")
+    time.sleep(1)
+    print()
+    print("and these are the defenses available to you")
+    time.sleep(1)
+    print(*your_defenses, sep = ", ")
+    print()
+
+def which_one( choice1, choice2, atk_or_def ):
+    ### function of choosing between pairs of attacks and defenses ###
+    print(f"your two choices are {choice1.name} and {choice2.name}")
+    time.sleep(1)
+    choice1.showstats()
+    time.sleep(1)
+    choice2.showstats()
+    item_choices = [ choice1.name, choice2.name ]
+    time.sleep(1)
+    item_choice = input(f"which one would you like to pick? ")
+    while item_choice not in item_choices:
+        item_choice = input(f"please pick a valid choice: {choice1} or {choice2}? ")
+    if atk_or_def == 'attack':
+        if item_choice == choice1.name:
+            your_attacks.append(choice1)
+            avail_attacks.remove(choice1)
+        elif item_choice == choice2.name:
+            your_attacks.append(choice2)
+            avail_attacks.remove(choice2)
+    elif atk_or_def == 'defense':
+        if item_choice == choice1.name:
+            your_defenses.append(choice1)
+            avail_defenses.remove(choice1)
+        elif item_choice == choice2.name:
+            your_defenses.append(choice2)
+            avail_defenses.remove(choice2)
+    time.sleep(1)
+    display_items()
 
 print()
 print(f"well done, you have chosen well.")
@@ -266,9 +318,27 @@ time.sleep(1)
 print(f"yeeting to walmart now...")
 time.sleep(2)
 print()
-print()
 print(f"you walk into walmart and head to the attacks section first.")
 time.sleep(1)
+print(f"you will be given two pairs of options, choose 1 from each pair.")
+time.sleep(1)
+print(f"the one you do not select will be your enemies' items")
+print()
+time.sleep(2)
+which_one( ds, exp, 'attack')
+time.sleep(2)
+print(f"next pair of attack items")
+time.sleep(1)
+which_one( call, twit, 'attack')
+time.sleep(2)
+print(f"now we are moving on to the defense items")
+time.sleep(1)
+which_one( fake, disapp, 'defense')
+time.sleep(2)
+print(f"next pair of defense items")
+time.sleep(1)
+which_one( exc, proof, 'defense')
+print()
 
 ## final battle
 
@@ -277,6 +347,10 @@ print(f"ok. now that you have collected all your allies and formed two teams, an
 time.sleep(1)
 print(f"it is time...")
 time.sleep(1)
-
-
+print()
+print(f"before we begin, these are all of your current stats")
+displayTeams()
+print()
+time.sleep(1)
+display_items()
 
