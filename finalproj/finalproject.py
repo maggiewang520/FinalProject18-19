@@ -3,16 +3,17 @@ import time
 ##intro
 
 print ( "welcome, bienvenido, benvenuto, bem vinda, 欢迎, ようこそ, to Maggie's final project")
+print()
 time.sleep(1)
-print('you will embark on the ultimate adventure around LA')
+print('you will be thrusted into the hell that is LA')
 time.sleep(1)
-print( 'and you will collect allies, items, and more along the way')
-time.sleep(3)
-print( 'this is all in preparation for an epic battle at the end')
-time.sleep(2)
-print( "and here is a little bit of good luck from me cuz you'll need it")
+print("in order to escape, you will have to collect allies and win the fight at the end")
+time.sleep(1)
+print()
+print( "good luck, you're gonna need it")
 time.sleep(2)
 
+print()
 start = input( 'are you ready to begin the adventure?! ')
 
 if start == 'yes':
@@ -21,6 +22,7 @@ else:
     print("welp. too bad. we are starting anyway")
 
 time.sleep(1)
+print()
 for x in range (0,5):
     b = "Loading" + "." * x
     print (b, end="\r")
@@ -32,29 +34,32 @@ playerName = input('ok, first, what is your name? ')
 
 class Fighter:
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff):
+    def __init__(self, name, species, health, atkCoeff, defCoeff, atks, defs):
         self.name = name
         self.species = species
         self.health = health
         self.atkCoeff = atkCoeff
         self.defCoeff = defCoeff
+        self.atks = atks
+        self.defs = defs
 
     def attack(self, opponent):
+        print()
         print(f"{self.name} has attacked {opponent.name}!")
         if opponent.health >= 20:
             if opponent in enemies:
-                print(f"unfortunately, {opponent.name} still has health left so they were able to use their defense power.")
+                print(f"unfortunately, {opponent.name} still has ample health left so they were able to use their defense power.")
                 dmg = self.atkCoeff - opponent.defCoeff
                 opponent.health -= dmg
             else:
                 print(f"fortunately, {opponent.name} has a health less than 20 so they were not able to use their defense power.")
                 opponent.health -= self.atkCoeff
+        print()
         print(f"the resulting health of {opponent.name} is {opponent.health}")
+        print()
 
-    def eat(self):
-        print(f"{self.name} ate the food and increased their health")
-        self.health += 20
-        print(f"{self.name}'s health is now {self.health}")
+    def use_atk(self, opponent):
+        print(f"{self.name} has attacked {opponent.name} with {self.atks[1].key()}")
 
     def __str__(self):
         return self.name
@@ -63,8 +68,8 @@ class Fighter:
 
 class Youtuber(Fighter):
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, subscribers):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
+    def __init__(self, name, species, health, atkCoeff, defCoeff, atks, defs, subscribers):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, atks, defs)
         self.subscribers = subscribers
 
     def stats(self):
@@ -75,29 +80,15 @@ class Youtuber(Fighter):
         print(f" - health: {self.health}")
         print(f" - attack power: {self.atkCoeff}")
         print(f" - defense power: {self.defCoeff}")
+        print(f" - attacks: {self.atks}")
+        print(f" - defenses: {self.defs}")
         print(f" - subscribers: {self.subscribers}")
         print()
 
-    def gainSubs(self):
-        print(f"{self.name} posted a diss track and gained subscribers!")
-        self.subscribers += 100000
-        print(f"{self.name}'s subscriber count is now {self.subscribers}")
-        print(f"this also makes {self.name} more powerful")
-        self.atkCoeff += 1
-        print(f"{self.name}'s attack power is now {self.atkCoeff}")
-
-    def loseSubs(self):
-        print(f"{self.name} was racist and sexist and lost subscribers")
-        self.subscribers -= 1000000
-        print(f"{self.name}'s subscriber count is now {self.subscribers}")
-        print(f"this also makes {self.name} weaker")
-        self.atkCoeff -= 1
-        print(f"{self.name}'s attack power is now {self.atkCoeff}")
-
 class Celeb(Fighter):
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, networth):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff)
+    def __init__(self, name, species, health, atkCoeff, defCoeff, atks, defs, networth):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, atks, defs)
         self.networth = networth
 
     def stats(self):
@@ -108,46 +99,32 @@ class Celeb(Fighter):
         print(f" - health: {self.health}")
         print(f" - attack power: {self.atkCoeff}")
         print(f" - defense power: {self.defCoeff}")
+        print(f" - attacks: {self.atks}")
+        print(f" - defenses: {self.defs}")
         print(f" - net worth: {self.networth}")
         print()
 
-    def makeMoney(self):
-        print(f"{self.name} put out a new movie or song and acquired the dough!")
-        self.networth += 1000000
-        print(f"{self.name}'s net worth is now {self.networth}")
-        print(f"this also makes {self.name} more powerful")
-        self.atkCoeff += 1
-        print(f"{self.name}'s attack power is now {self.atkCoeff}")
+ksi = Youtuber( 'KSI', 'the devil himself', 50, 10, 1, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 20000000)
+lpaul = Youtuber( 'Logan Paul', 'chungus', 60, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 19000000)
 
-    def loseMoney(self):
-        print(f"{self.name} screwed up and lost the dough")
-        self.networth -= 1000000
-        print(f"{self.name}'s net worth is now {self.networth}")
-        print(f"this also makes {self.name} weaker")
-        self.atkCoeff -= 1
-        print(f"{self.name}'s attack power is now {self.atkCoeff}")
+jpaul = Youtuber( 'Jake Paul', 'chungus jr.', 70, 8, 1, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 18000000)
+shane = Youtuber( 'Shane Dawson', 'illuminati himself', 60, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 20000000)
 
+pew = Youtuber( 'Pewdiepie', 'swedish lasagna', 90, 11, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 80000000)
+tseries = Youtuber( 'T-Series', 't-gay', 80, 10, 3, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 79000000)
 
-ksi = Youtuber( 'KSI', 'the devil himself', 50, 2, 1, 19921956)
-lpaul = Youtuber( 'Logan Paul', 'chungus', 60, 1, 2, 18773617)
+jstar = Youtuber( 'Jeffree Star', 'inhuman', 50, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 12000000)
+jcharles = Youtuber( 'James Charles', 'sister', 60, 8, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 13000000)
 
-jpaul = Youtuber( 'Jake Paul', 'chungus jr.', 40, 1.5, 1, 17709933)
-shane = Youtuber( 'Shane Dawson', 'illuminati himself', 70, 2, 2.5, 19733606)
-
-pew = Youtuber( 'Pewdiepie', 'swedish lasagna', 90, 3, 3, 80278892)
-tseries = Youtuber( 'T-Series', 't-gay', 70, 2, 2, 79593540)
-
-jstar = Youtuber( 'Jeffree Star', 'inhuman', 70, 2, 1.5, 12110610)
-jcharles = Youtuber( 'James Charles', 'sister', 80, 1.5, 2, 13114500)
-
-kimk = Celeb( 'Kim Kardashian', 'birth giver', 60, 1.5, 2, 350000000)
-kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 80, 2, 2, 900000000)
+kimk = Celeb( 'Kim Kardashian', 'birth giver', 60, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 350000000)
+kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 70, 8, 1, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 900000000)
 
 allies = []
 enemies = []
 
 ## adventure : team formation
 
+print()
 print(f"welcome, {playerName}. you have just arrived in LAX...")
 time.sleep(1)
 
@@ -164,14 +141,16 @@ available_dests = list(dests.keys())
 def displaydests( ):
     global available_dests
     time.sleep(1)
+    print()
     print("these are all the destinations that are available")
     for x in range(len(available_dests)):
         print(f" - {available_dests[x]}")
         time.sleep(0.5)
-    #print(*available_dests, sep = ", ")
+    print()
 
 def whereToYeet( alldests ):
     global available_dests
+    print()
     print(f"so, {playerName}, where would you like to go?")
     displaydests()
     dest = input(f"choose one of the valid destinations listed above " )
@@ -179,6 +158,7 @@ def whereToYeet( alldests ):
         displaydests()
         dest = input(f"please choose a valid destination " )
     time.sleep(1)
+    print()
     print(f"okay, we are yeeting to {dest} now.")
     available_dests.remove(dest)
     time.sleep(1)
@@ -187,10 +167,10 @@ def whereToYeet( alldests ):
         print (b, end="\r")
         time.sleep(1)
     print(f"we have arrived in {dest}!")
+    print()
     return dest
 
 def displayTeams():
-    print()
     print("these are your allies")
     time.sleep(1)
     print(*allies, sep = ", ")
@@ -203,12 +183,12 @@ def displayTeams():
 
 def chooseAlly( place ):
     time.sleep(1)
+    print()
     print(f"at {place}, you come accross {dests[place][0]} and {dests[place][1]} having a huge argument with one another")
     time.sleep(1)
     print(f"they appear to hate each other. now is your chance to snatch an ally!")
     time.sleep(1)
-    print(f"you can only pick one to be your ally, and the other one will automatically be placed in the enemy team" )
-    time.sleep(1)
+    print()
     print(f"you will now see the stats of {dests[place][0]} and {dests[place][1]} to help you make a decision")
     time.sleep(1)
     dests[place][0].stats()
@@ -228,15 +208,26 @@ def chooseAlly( place ):
         allies.append(dests[place][1])
         yourenemy = dests[place][0]
         enemies.append(dests[place][0])
+    print()
     print(f"{yourally} is now on your side and will fight for you!")
     time.sleep(1)
     print(f"and {yourenemy} is now against you and aspires to destroy you in the final battle")
+    print()
     time.sleep(1)
     displayTeams()
 
+print()
 time.sleep(1)
 print(f"it's already time to go to our first destination.")
 time.sleep(1)
+print(f"at these destinations, you will meet pairs of characters and have a choice of an ally")
+time.sleep(1.5)
+print(f"you can only pick one to be your ally, and the other one will automatically be placed in the enemy team" )
+time.sleep(2)
+print(f"in the final battle, these 5 pairs will fight one another, and best 3 out of 5 battles wins. so choose carefully")
+print()
+time.sleep(2)
+
 chooseAlly(whereToYeet(available_dests))
 
 while len(available_dests) >= 1:
@@ -246,17 +237,16 @@ while len(available_dests) >= 1:
     chooseAlly(whereToYeet(available_dests))
     time.sleep(1)
 
+print()
 print(f"ok. now that you have collected all your allies and formed two teams,")
 time.sleep(1)
-print(f"it is time to look around for attack and defense items to fight with")
+print(f"it is time...")
 time.sleep(1)
 
-###  to do: print empty lines to organize game ###
-
-## adventure : item collection
+## final battle
 
 # allies[1].attack(enemies[1])
 
-attack_items = { }
 
-defense_items = { }
+
+
