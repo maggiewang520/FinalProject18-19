@@ -34,14 +34,12 @@ playerName = input('ok, first, what is your name? ')
 
 class Fighter:
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, atks, defs):
+    def __init__(self, name, species, health, atkCoeff, defCoeff):
         self.name = name
         self.species = species
         self.health = health
         self.atkCoeff = atkCoeff
         self.defCoeff = defCoeff
-        self.atks = atks
-        self.defs = defs
 
     def attack(self, opponent):
         print()
@@ -58,9 +56,6 @@ class Fighter:
         print(f"the resulting health of {opponent.name} is {opponent.health}")
         print()
 
-    def use_atk(self, opponent):
-        print(f"{self.name} has attacked {opponent.name} with {self.atks[1]}")
-
     def __str__(self):
         return self.name
 
@@ -68,8 +63,8 @@ class Fighter:
 
 class Youtuber(Fighter):
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, atks, defs, subscribers):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, atks, defs)
+    def __init__(self, name, species, health, atkCoeff, defCoeff, subscribers):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff,)
         self.subscribers = subscribers
 
     def stats(self):
@@ -80,15 +75,13 @@ class Youtuber(Fighter):
         print(f" - health: {self.health}")
         print(f" - attack power: {self.atkCoeff}")
         print(f" - defense power: {self.defCoeff}")
-        print(f" - attacks: {self.atks}")
-        print(f" - defenses: {self.defs}")
         print(f" - subscribers: {self.subscribers}")
         print()
 
 class Celeb(Fighter):
 
-    def __init__(self, name, species, health, atkCoeff, defCoeff, atks, defs, networth):
-        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff, atks, defs)
+    def __init__(self, name, species, health, atkCoeff, defCoeff, networth):
+        Fighter.__init__(self, name, species, health, atkCoeff, defCoeff )
         self.networth = networth
 
     def stats(self):
@@ -99,25 +92,23 @@ class Celeb(Fighter):
         print(f" - health: {self.health}")
         print(f" - attack power: {self.atkCoeff}")
         print(f" - defense power: {self.defCoeff}")
-        print(f" - attacks: {self.atks}")
-        print(f" - defenses: {self.defs}")
         print(f" - net worth: {self.networth}")
         print()
 
-ksi = Youtuber( 'KSI', 'the devil himself', 50, 10, 1, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 20000000)
-lpaul = Youtuber( 'Logan Paul', 'chungus', 60, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 19000000)
+ksi = Youtuber( 'KSI', 'the devil himself', 50, 10, 1, 20000000)
+lpaul = Youtuber( 'Logan Paul', 'chungus', 60, 9, 2, 19000000)
 
-jpaul = Youtuber( 'Jake Paul', 'chungus jr.', 70, 8, 1, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 18000000)
-shane = Youtuber( 'Shane Dawson', 'illuminati himself', 60, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 20000000)
+jpaul = Youtuber( 'Jake Paul', 'chungus jr.', 70, 8, 1, 18000000)
+shane = Youtuber( 'Shane Dawson', 'illuminati himself', 60, 9, 2, 20000000)
 
-pew = Youtuber( 'Pewdiepie', 'swedish lasagna', 90, 11, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 80000000)
-tseries = Youtuber( 'T-Series', 't-gay', 80, 10, 3, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 79000000)
+pew = Youtuber( 'Pewdiepie', 'swedish lasagna', 90, 11, 2, 80000000)
+tseries = Youtuber( 'T-Series', 't-gay', 80, 10, 3, 79000000)
 
-jstar = Youtuber( 'Jeffree Star', 'inhuman', 50, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 12000000)
-jcharles = Youtuber( 'James Charles', 'sister', 60, 8, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 13000000)
+jstar = Youtuber( 'Jeffree Star', 'inhuman', 50, 9, 2, 12000000)
+jcharles = Youtuber( 'James Charles', 'sister', 60, 8, 2, 13000000)
 
-kimk = Celeb( 'Kim Kardashian', 'birth giver', 60, 9, 2, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 350000000)
-kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 70, 8, 1, {'attack1': 2, 'attack2': 3}, {'defense1': 1, 'defense': 1}, 900000000)
+kimk = Celeb( 'Kim Kardashian', 'birth giver', 60, 9, 2, 350000000)
+kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 70, 8, 1, 900000000)
 
 allies = []
 enemies = []
@@ -237,16 +228,55 @@ while len(available_dests) >= 1:
     chooseAlly(whereToYeet(available_dests))
     time.sleep(1)
 
+## special items
+
+class Item():
+
+    def __init__(self, name, type, power, use):
+        self.name = name
+        self.type = type
+        self.power = power
+        self.use = use
+
+    def showstats(self):
+        print()
+        print(f"these are the stats of {self.name}")
+        print(f" - type : {self.type}")
+        print(f" - {self.type} power : {self.power}")
+        print(f" - number of uses : {self.use}")
+        print()
+
+    def __str__(self):
+        return self.name
+
+    __repr__ = __str__
+
+ds = Item('diss track', 'attack', 10, 1)
+exp = Item('expose for racism', 'attack', 15, 1)
+
+
 print()
-print(f"ok. now that you have collected all your allies and formed two teams,")
+print(f"well done, you have chosen well.")
 time.sleep(1)
-print(f"it is time...")
+print(f"the last thing there is to do is to go to walmart and select your special items")
+time.sleep(1)
+print(f"these are special attacks and defenses that can greatly increase your chances of winning")
+print()
+time.sleep(1)
+print(f"yeeting to walmart now...")
+time.sleep(2)
+print()
+print()
+print(f"you walk into walmart and head to the attacks section first.")
 time.sleep(1)
 
 ## final battle
 
-allies[1].use_atk(enemies[1])
-
+print()
+print(f"ok. now that you have collected all your allies and formed two teams, and selected your items")
+time.sleep(1)
+print(f"it is time...")
+time.sleep(1)
 
 
 
