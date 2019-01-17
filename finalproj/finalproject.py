@@ -44,17 +44,19 @@ class Fighter:
     def attack(self, opponent):
         print()
         print(f"{self.name} has attacked {opponent.name}!")
+        time.sleep(2)
         if opponent.health >= 20:
-            if opponent in enemies:
-                print(f"unfortunately, {opponent.name} still has ample health left so they were able to use their defense power.")
-                dmg = self.atkCoeff - opponent.defCoeff
-                opponent.health -= dmg
-            else:
-                print(f"fortunately, {opponent.name} has a health less than 20 so they were not able to use their defense power.")
-                opponent.health -= self.atkCoeff
+          print(f"{opponent.name} still had ample health left so they were able to use their defense power")
+          dmg = self.atkCoeff - opponent.defCoeff
+          opponent.health -= dmg
+        else:
+          print(f"{opponent.name} has not enough health so they were not able to use their defense power.")
+          opponent.health -= self.atkCoeff
         print()
+        time.sleep(2)
         print(f"the resulting health of {opponent.name} is {opponent.health}")
         print()
+        time.sleep(1)
 
     def __str__(self):
         return self.name
@@ -367,13 +369,102 @@ num_won = 0
 num_lost = 0
 game_num = 0
 
+### working on in replit
+
+def ally_attack( attacker, opponent ):
+  print()
+  print(f"{attacker.name} has attacked {opponent.name}!")
+  time.sleep(1)
+  if opponent.health >= 20:
+    print(f"{opponent.name} still had ample health left so they were able to use their defense power")
+    dmg = attacker.atkCoeff - opponent.defCoeff
+    opponent.health -= dmg
+  else:
+    print(f"{opponent.name} has not enough health so they were not able to use their defense power.")
+    opponent.health -= self.atkCoeff
+    print()
+  time.sleep(1)
+  print(f"the resulting health of {opponent.name} is {opponent.health}")
+  print()
+  time.sleep(1)
+  use_item_or_not()
+
+def use_item( item ):
+  print(f"okay. so you want to use '{item.name}'.")
+  item.showstats()
+
+def use_item_or_not():
+  use_item = input(f"would you like to use a special item in your inventory?")
+  print()
+  if use_item == 'yes':
+    time.sleep(1)
+    print(f"okay.")
+    display_items()
+    time.sleep(1)
+    which_item_use = input(f"which item in available in your inventory would you like to use? ")
+    if which_item_use == your_attacks[0].name:
+      print(f"using {your_attacks[0]}...")
+      #use_item( your_attacks[0] )
+    elif which_item_use == your_attacks[1].name:
+      print(f"using {your_attacks[1]}...")
+      #use_item( your_attacks[1] )
+    elif which_item_use == your_defenses[0].name:
+      print(f"using {your_defenses[0]}...")
+      #use_item( your_defenses[0] )
+    elif which_item_use == your_defenses[1].name:
+      print(f"using {your_defenses[0]}...")
+      #use_item( your_defenses[1] )
+  else:
+    print()
+    print(f"okay, the battle will continue then.")
+
 def battle( ally, enemy ):
     global num_won
     global game_num
     global num_lost
-    print(f"this is the battle function: {ally} and {enemy}")
-    num_won += 1
+
+    print(f"welcome to battle {game_num + 1}!")
+    print()
+    time.sleep(1)
+    print(f"{ally}, who is on your team, will be fighting {enemy}!")
+    print()
+    for x in range (0,5):
+      b = "Loading" + "." * x
+      print (b, end="\r")
+      time.sleep(1)
+    print()
+    ally.stats()
+    enemy.stats()
+    print()
+    print(f"--------------------------------------")
+    print(f"you will be going first.")
+    time.sleep(1)
+    while ally.health > 0 and enemy.health > 0:
+      print(f"it is your turn")
+      ally_attack( ally, enemy )
+      print(f"it is now {enemy.name}'s turn")
+      print(f"--------------------------------------"
+      )
+      time.sleep(2)
+      enemy.attack(ally)
+      print(f"--------------------------------------"
+      )
+    if ally.health <= 0:
+      num_lost += 1
+      print(f"sorry, you lost. you've lost {num_lost} game(s) so far")
+    if enemy.health <= 0:
+      num_won += 1
+      print(f"congrats! you won battle {game_num + 1}! you have won {num_won} battles so far")
     game_num += 1
+
+    time.sleep(1)
+    print()
+    for x in range (0,5):
+      b = "Loading" + "." * x
+      print (b, end="\r")
+      time.sleep(1)
+
+### replit work ends here
 
 def exit_game():
 
