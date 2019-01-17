@@ -59,7 +59,7 @@ class Fighter:
         print()
 
     def use_atk(self, opponent):
-        print(f"{self.name} has attacked {opponent.name} with {self.atks[1].key()}")
+        print(f"{self.name} has attacked {opponent.name} with {self.atks[1]}")
 
     def __str__(self):
         return self.name
@@ -245,7 +245,7 @@ time.sleep(1)
 
 ## final battle
 
-# allies[1].attack(enemies[1])
+allies[1].use_atk(enemies[1])
 
 
 
