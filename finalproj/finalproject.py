@@ -349,8 +349,47 @@ print(f"it is time...")
 time.sleep(1)
 print()
 print(f"before we begin, these are all of your current stats")
+print()
 displayTeams()
 print()
 time.sleep(1)
 display_items()
+print()
+time.sleep(1)
+print(f"okay, {playerName}, we are gonna get started now")
+ready = input(f"are you ready to begin the battle?")
+if ready == 'yes':
+    print("of course you are. let us begin")
+else:
+    print("too bad, you have no choice. i can't watch you rot here in LA")
 
+num_won = 0
+num_lost = 0
+game_num = 0
+
+def battle( ally, enemy ):
+    global num_won
+    global game_num
+    global num_lost
+    print(f"this is the battle function: {ally} and {enemy}")
+    num_won += 1
+    game_num += 1
+
+def exit_game():
+
+    if num_won == 3:
+        print()
+        print(f"congradulations! you won!")
+    else:
+        print(f"unfortunately, you lost. better luck next time...")
+    print()
+    time.sleep(1)
+    print(f"thank you very much for playing")
+    time.sleep(1)
+    print(f"i hope you enjoyed your time. bye!")
+
+while True:
+  battle( allies[game_num], enemies[game_num])
+  if num_won == 3 or num_lost == 2 :
+    exit_game()
+    exit()
