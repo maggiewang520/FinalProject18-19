@@ -38,6 +38,9 @@ all_defenses = [ fake, disapp, exc,
 your_attacks = [ ]
 your_defenses = [ ]
 
+def which_one( choice1, choice2 ):
+    ### function of choosing between pairs of attacks and defenses ###
+
 print()
 print(f"well done, you have chosen well.")
 time.sleep(1)
