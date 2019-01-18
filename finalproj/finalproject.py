@@ -370,6 +370,17 @@ num_won = 0
 num_lost = 0
 game_num = 0
 
+def enemy_use_item( attacker, opponent ):
+  coin = [ 'heads', 'tails' ]
+  use_or_not = random.choice(coin)
+  time.sleep(2)
+  if use_or_not == 'heads':
+    print(f"oof, {opponent.name} has decided to use a special item")
+  elif use_or_not == 'tails':
+    print(f"{opponent} flipped a coin and got tails, so they are not going to use a special item. you are in luck")
+    print()
+    time.sleep(1)
+
 def ally_attack( attacker, opponent ):
   print()
   attack_or_not = input(f"would you like for {attacker.name} to attack {opponent.name}?")
@@ -425,6 +436,8 @@ def enemy_attack( attacker, opponent ):
   print(f"the resulting health of {opponent.name} is {opponent.health}")
   print()
   time.sleep(2)
+  print()
+  enemy_use_item( attacker, opponent )
 
 def use_item( attacker, opponent, item_used ):
   print(f"okay. so you want to use {item_used.name}")
@@ -440,6 +453,13 @@ def use_item( attacker, opponent, item_used ):
     opponent.health -= damage
     print()
     print(f"the resulting health of {opponent.name} is {opponent.health}")
+    time.sleep(1)
+    print()
+    item_used.use -= 1
+    if item_used.use == 0:
+      print(f"now that you used the item once, you may no longer use this item anymore" )
+    else:
+      print(f"the remaining number of uses left for {item_used.name} is {item_used.use}")
   elif item_used.itemtype == 'defense':
     print(f"since the item you chose to use is an defense, {attacker} will now restore their health unconditionally with a level of {item_used.power}"  )
     print()
@@ -447,11 +467,15 @@ def use_item( attacker, opponent, item_used ):
     attacker.health += item_used.power
     print(f"the resulting health of {attacker.name} is {attacker.health}")
     print()
+    if item_used.use == 0:
+      print(f"now that you used the item once, you may no longer use this item anymore" )
+    else:
+      print(f"the remaining number of uses left for {item_used.name} is {item_used.use}")
 
 def use_item_or_not( attacker, opponent ):
-  use_item = input(f"now... would you like to use a special item in your inventory? keep in mind that your special items have limited uses")
+  use_item_question = input(f"now... would you like to use a special item in your inventory? keep in mind that your special items have limited uses   ")
   print()
-  if use_item == 'yes':
+  if use_item_question == 'yes':
     time.sleep(1)
     print(f"okay.")
     display_items()
@@ -463,19 +487,19 @@ def use_item_or_not( attacker, opponent ):
     if which_item_use == your_attacks[0].name:
       print(f"using {your_attacks[0]}...")
       print()
-      #use_item( attacker, opponent, your_attacks[0] )
+      use_item( attacker, opponent, your_attacks[0] )
     elif which_item_use == your_attacks[1].name:
       print(f"using {your_attacks[1]}...")
       print()
-      #use_item( attacker, opponent, your_attacks[1] )
+      use_item( attacker, opponent, your_attacks[1] )
     elif which_item_use == your_defenses[0].name:
       print(f"using {your_defenses[0]}...")
       print()
-      #use_item( attacker, opponent, your_defenses[0] )
+      use_item( attacker, opponent, your_defenses[0] )
     elif which_item_use == your_defenses[1].name:
       print(f"using {your_defenses[0]}...")
       print()
-      #use_item( attacker, opponent, your_defenses[1] )
+      use_item( attacker, opponent, your_defenses[1] )
   else:
     print()
     print(f"okay, the battle will continue then.")
@@ -530,7 +554,6 @@ def battle( ally, enemy ):
     print()
     print()
     print()
-
 def exit_game():
 
     if num_won == 3:
