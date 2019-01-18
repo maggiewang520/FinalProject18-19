@@ -375,7 +375,7 @@ num_lost = 0
 game_num = 0
 
 def enemy_use_item( attacker, opponent ):
-  coin = [ 'heads', 'tails', 'tails' ]
+  coin = [ 'heads', 'tails', 'tails', 'tails' ]
   use_or_not = random.choice(coin)
   time.sleep(2)
   if use_or_not == 'heads':
@@ -415,7 +415,7 @@ def enemy_use_item( attacker, opponent ):
       else:
         print(f"the remaining number of uses left for {enemy_item_used.name} is {enemy_item_used.use}")
 
-  elif use_or_not == 'tails':
+  else:
     print(f"{opponent} decided they are not going to use a special item. you are in luck")
     print()
     time.sleep(1)
