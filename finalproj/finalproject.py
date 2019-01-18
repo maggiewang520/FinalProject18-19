@@ -1,4 +1,5 @@
 import time
+import random
 
 ## introduction to game
 
@@ -369,32 +370,86 @@ num_won = 0
 num_lost = 0
 game_num = 0
 
-### working on in replit
-
 def ally_attack( attacker, opponent ):
   print()
-  print(f"{attacker.name} has attacked {opponent.name}!")
+  attack_or_not = input(f"would you like for {attacker.name} to attack {opponent.name}?")
   time.sleep(1)
+  print()
+  if attack_or_not == 'yes':
+    print(f"{attacker.name} has attacked {opponent.name} with a power of {attacker.atkCoeff}!")
+    time.sleep(2)
+    if opponent.health >= 20:
+      print(f"{opponent.name} still had ample health left so they were able to use their defense power of {opponent.defCoeff}")
+      dmg = attacker.atkCoeff - opponent.defCoeff
+      opponent.health -= dmg
+      print()
+      time.sleep(2)
+      print(f"the amount of damage done to {opponent} was {dmg} health points")
+    else:
+      print(f"{opponent.name} has not enough health so they were not able to use their defense power.")
+      opponent.health -= attacker.atkCoeff
+      print()
+      time.sleep(2)
+      print(f"the amount of damage done to {opponent} was {dmg} health points")
+    time.sleep(2)
+    print(f"the resulting health of {opponent.name} is {opponent.health}")
+    print()
+    time.sleep(2)
+  else:
+    print(f"ok... idk why you would choose this but anyways...")
+    time.sleep(2)
+  time.sleep(2)
+  print()
+  use_item_or_not( attacker, opponent )
+  print()
+  print()
+
+def enemy_attack( attacker, opponent ):
+  print()
+  print(f"{attacker.name} has attacked {opponent.name} with a power of {attacker.atkCoeff}!")
+  time.sleep(2)
   if opponent.health >= 20:
-    print(f"{opponent.name} still had ample health left so they were able to use their defense power")
+    print(f"{opponent.name} still had ample health left so they were able to use their defense power of {opponent.defCoeff}")
     dmg = attacker.atkCoeff - opponent.defCoeff
     opponent.health -= dmg
+    print()
+    time.sleep(2)
+    print(f"the amount of damage done to {opponent} was {dmg} health points")
   else:
     print(f"{opponent.name} has not enough health so they were not able to use their defense power.")
-    opponent.health -= self.atkCoeff
+    opponent.health -= attacker.atkCoeff
     print()
-  time.sleep(1)
+    time.sleep(2)
+    print(f"the amount of damage done to {opponent} was {dmg} health points")
+  time.sleep(2)
   print(f"the resulting health of {opponent.name} is {opponent.health}")
   print()
-  time.sleep(1)
-  use_item_or_not()
+  time.sleep(2)
 
-def use_item( item ):
-  print(f"okay. so you want to use '{item.name}'.")
-  item.showstats()
+def use_item( attacker, opponent, item_used ):
+  print(f"okay. so you want to use {item_used.name}")
+  print()
+  item_used.showstats()
+  print()
+  if item_used.itemtype  == 'attack':
+    print(f"since the item you chose to use is an attack, {attacker} will now attack {opponent} with an additional attack power of {item_used.power}"  )
+    print()
+    time.sleep(2)
+    damage = attacker.atkCoeff + item_used.power
+    print(f"{attacker.name} has attacked {opponent.name} with an increased attack power of {damage}")
+    opponent.health -= damage
+    print()
+    print(f"the resulting health of {opponent.name} is {opponent.health}")
+  elif item_used.itemtype == 'defense':
+    print(f"since the item you chose to use is an defense, {attacker} will now restore their health unconditionally with a level of {item_used.power}"  )
+    print()
+    time.sleep(2)
+    attacker.health += item_used.power
+    print(f"the resulting health of {attacker.name} is {attacker.health}")
+    print()
 
-def use_item_or_not():
-  use_item = input(f"would you like to use a special item in your inventory?")
+def use_item_or_not( attacker, opponent ):
+  use_item = input(f"now... would you like to use a special item in your inventory? keep in mind that your special items have limited uses")
   print()
   if use_item == 'yes':
     time.sleep(1)
@@ -402,18 +457,25 @@ def use_item_or_not():
     display_items()
     time.sleep(1)
     which_item_use = input(f"which item in available in your inventory would you like to use? ")
+    all_items_to_use = [ your_attacks[0].name, your_attacks[1].name, your_defenses[0].name, your_defenses[1].name ]
+    while which_item_use not in all_items_to_use :
+      which_item_use = input(f"please pick a valid item ")
     if which_item_use == your_attacks[0].name:
       print(f"using {your_attacks[0]}...")
-      #use_item( your_attacks[0] )
+      print()
+      #use_item( attacker, opponent, your_attacks[0] )
     elif which_item_use == your_attacks[1].name:
       print(f"using {your_attacks[1]}...")
-      #use_item( your_attacks[1] )
+      print()
+      #use_item( attacker, opponent, your_attacks[1] )
     elif which_item_use == your_defenses[0].name:
       print(f"using {your_defenses[0]}...")
-      #use_item( your_defenses[0] )
+      print()
+      #use_item( attacker, opponent, your_defenses[0] )
     elif which_item_use == your_defenses[1].name:
       print(f"using {your_defenses[0]}...")
-      #use_item( your_defenses[1] )
+      print()
+      #use_item( attacker, opponent, your_defenses[1] )
   else:
     print()
     print(f"okay, the battle will continue then.")
@@ -434,6 +496,7 @@ def battle( ally, enemy ):
       time.sleep(1)
     print()
     ally.stats()
+    time.sleep(1)
     enemy.stats()
     print()
     print(f"--------------------------------------")
@@ -442,11 +505,11 @@ def battle( ally, enemy ):
     while ally.health > 0 and enemy.health > 0:
       print(f"it is your turn")
       ally_attack( ally, enemy )
-      print(f"it is now {enemy.name}'s turn")
       print(f"--------------------------------------"
       )
+      print(f"it is now {enemy.name}'s turn")
       time.sleep(2)
-      enemy.attack(ally)
+      enemy_attack( ally, enemy )
       print(f"--------------------------------------"
       )
     if ally.health <= 0:
@@ -460,11 +523,13 @@ def battle( ally, enemy ):
     time.sleep(1)
     print()
     for x in range (0,5):
-      b = "Loading" + "." * x
+      b = "Loading next game" + "." * x
       print (b, end="\r")
       time.sleep(1)
-
-### replit work ends here
+    print()
+    print()
+    print()
+    print()
 
 def exit_game():
 
