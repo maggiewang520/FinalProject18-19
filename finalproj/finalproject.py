@@ -371,13 +371,48 @@ num_lost = 0
 game_num = 0
 
 def enemy_use_item( attacker, opponent ):
-  coin = [ 'heads', 'tails' ]
+  coin = [ 'heads', 'tails', 'tails' ]
   use_or_not = random.choice(coin)
   time.sleep(2)
   if use_or_not == 'heads':
-    print(f"oof, {opponent.name} has decided to use a special item")
+    print(f"oof, {attacker.name} has decided to use a special item")
+    all_items_to_avail = [ your_attacks[0], your_attacks[1], your_defenses[0], your_defenses[1] ]
+    enemy_item_used = random.choice(all_items_to_avail)
+    time.sleep(1)
+    print()
+    print(f"{opponent.name} decided to use {enemy_item_used.name} which is a {enemy_item_used.itemtype}")
+    if enemy_item_used.itemtype  == 'attack':
+      print()
+      time.sleep(2)
+      damage = attacker.atkCoeff + enemy_item_used.power
+      print(f"{attacker.name} has attacked {opponent.name} with an increased attack power of {damage} using {enemy_item_used.name}")
+      opponent.health -= damage
+      print()
+      print(f"the resulting health of {opponent.name} is {opponent.health}")
+      time.sleep(1)
+      print()
+      enemy_item_used.use -= 1
+      if enemy_item_used.use == 0:
+        print(f"{attacker.name} may no longer use this anymore" )
+        all_items_to_avail.remove(enemy_item_used)
+      else:
+        print(f"the remaining number of uses left for {enemy_item_used.name} is {enemy_item_used.use}")
+    elif enemy_item_used.itemtype == 'defense':
+      print(f"since the item is a defense, {attacker.name} will now restore their health unconditionally with a level of {enemy_item_used.power}"  )
+      print()
+      time.sleep(2)
+      attacker.health += enemy_item_used.power
+      print(f"the resulting health of {attacker.name} is {attacker.health}")
+      print()
+      enemy_item_used.use -= 1
+      if enemy_item_used.use == 0:
+        print(f"{attacker.name} may no longer use this item anymore" )
+        all_items_to_avail.remove(enemy_item_used)
+      else:
+        print(f"the remaining number of uses left for {enemy_item_used.name} is {enemy_item_used.use}")
+
   elif use_or_not == 'tails':
-    print(f"{opponent} flipped a coin and got tails, so they are not going to use a special item. you are in luck")
+    print(f"{opponent} decided they are not going to use a special item. you are in luck")
     print()
     time.sleep(1)
 
@@ -449,7 +484,7 @@ def use_item( attacker, opponent, item_used ):
     print()
     time.sleep(2)
     damage = attacker.atkCoeff + item_used.power
-    print(f"{attacker.name} has attacked {opponent.name} with an increased attack power of {damage}")
+    print(f"{attacker.name} has attacked {opponent.name} with an increased attack power of {damage} using {item_used.name}")
     opponent.health -= damage
     print()
     print(f"the resulting health of {opponent.name} is {opponent.health}")
@@ -458,6 +493,7 @@ def use_item( attacker, opponent, item_used ):
     item_used.use -= 1
     if item_used.use == 0:
       print(f"now that you used the item once, you may no longer use this item anymore" )
+      your_attacks.remove(item_used)
     else:
       print(f"the remaining number of uses left for {item_used.name} is {item_used.use}")
   elif item_used.itemtype == 'defense':
@@ -467,8 +503,10 @@ def use_item( attacker, opponent, item_used ):
     attacker.health += item_used.power
     print(f"the resulting health of {attacker.name} is {attacker.health}")
     print()
+    item_used.use -= 1
     if item_used.use == 0:
       print(f"now that you used the item once, you may no longer use this item anymore" )
+      your_defenses.remove(item_used)
     else:
       print(f"the remaining number of uses left for {item_used.name} is {item_used.use}")
 
@@ -533,7 +571,7 @@ def battle( ally, enemy ):
       )
       print(f"it is now {enemy.name}'s turn")
       time.sleep(2)
-      enemy_attack( ally, enemy )
+      enemy_attack( enemy, ally )
       print(f"--------------------------------------"
       )
     if ally.health <= 0:
@@ -554,6 +592,8 @@ def battle( ally, enemy ):
     print()
     print()
     print()
+
+
 def exit_game():
 
     if num_won == 3:
