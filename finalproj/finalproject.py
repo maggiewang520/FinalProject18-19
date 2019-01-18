@@ -3,7 +3,7 @@ import random
 
 ## introduction to game
 
-print ( "welcome, bienvenido, benvenuto, bem vinda, 欢迎, ようこそ, to Maggie's final project")
+print ( "welcome to Maggie's final project! ")
 print()
 time.sleep(1)
 print('you will be thrusted into the hell that is LA')
@@ -136,7 +136,7 @@ def displaydests( ):
     global available_dests
     time.sleep(1)
     print()
-    print("these are all the destinations that are available")
+    print("available destinations: ")
     for x in range(len(available_dests)):
         print(f" - {available_dests[x]}")
         time.sleep(0.5)
@@ -145,9 +145,9 @@ def displaydests( ):
 def whereToYeet( alldests ):
     global available_dests
     print()
-    print(f"so, {playerName}, where would you like to go?")
+    print(f"{playerName}, where would you like to go?")
     displaydests()
-    dest = input(f"choose one of the valid destinations listed above " )
+    dest = input(f"choose a valid destinations listed above " )
     while dest not in alldests:
         displaydests()
         dest = input(f"please choose a valid destination " )
@@ -216,9 +216,9 @@ print(f"it's already time to go to our first destination.")
 time.sleep(1)
 print(f"at these destinations, you will meet pairs of characters and have a choice of an ally")
 time.sleep(1.5)
-print(f"you can only pick one to be your ally, and the other one will automatically be placed in the enemy team" )
+print(f"you can only pick one to be your ally, and the other one will become your enemy" )
 time.sleep(2)
-print(f"in the final battle, these 5 pairs will fight one another, and best 3 out of 5 battles wins. so choose carefully")
+print(f"in the final battle, these 5 pairs will fight one another, so choose carefully")
 print()
 time.sleep(2)
 
@@ -359,6 +359,10 @@ time.sleep(1)
 display_items()
 print()
 time.sleep(1)
+print(f"best 3 out of 5 battles. good luck!")
+print()
+print()
+time.sleep(3)
 print(f"okay, {playerName}, we are gonna get started now")
 ready = input(f"are you ready to begin the battle?")
 if ready == 'yes':
@@ -592,7 +596,6 @@ def battle( ally, enemy ):
     print()
     print()
     print()
-
 
 def exit_game():
 
