@@ -192,14 +192,14 @@ def chooseAlly( place ):
     time.sleep(1)
     print()
     print(f"at {place}, you come accross {dests[place][0]} and {dests[place][1]} having a huge argument with one another")
-    time.sleep(1)
+    time.sleep(2)
     print(f"they appear to hate each other. now is your chance to snatch an ally!")
-    time.sleep(1)
+    time.sleep(2)
     print()
     print(f"you will now see the stats of {dests[place][0]} and {dests[place][1]} to help you make a decision")
-    time.sleep(1)
+    time.sleep(2)
     dests[place][0].stats()
-    time.sleep(1)
+    time.sleep(2)
     dests[place][1].stats()
     time.sleep(2)
     yourally = input(f"Choose an ally from {place}: {dests[place][0]} or {dests[place][1]} ? ")
@@ -220,7 +220,7 @@ def chooseAlly( place ):
     time.sleep(1)
     print(f"and {yourenemy} is now against you and aspires to destroy you in the final battle")
     print()
-    time.sleep(1)
+    time.sleep(2)
     displayTeams()
 
 print()
@@ -478,7 +478,7 @@ def ally_attack( attacker, opponent ):
 def enemy_attack( attacker, opponent ):
     ### this function always has the enemy attacing the ally ###
   print()
-  print(f"{attacker.name} has attacked {opponent.name} with a power of {attacker.atkCoeff}!")
+  print(f"{attacker.name} has ⓐⓣⓣⓐⓒⓚed {opponent.name} with a power of {attacker.atkCoeff}!")
   time.sleep(2)
   if opponent.health >= 20:
     print(f"{opponent.name} still had ample health left so they were able to use their defense power of {opponent.defCoeff}")
@@ -509,7 +509,7 @@ def use_item( attacker, opponent, item_used ):
   print()
   time.sleep(2)
   if item_used.itemtype  == 'attack':
-    print(f"since the item you chose to use is an attack, {attacker} will now attack {opponent} with an additional attack power of {item_used.power}"  )
+    print(f"since the item you chose to use is an attack, {attacker} will now ⓐⓣⓣⓐⓒⓚ {opponent} with an additional attack power of {item_used.power}"  )
     print()
     time.sleep(3)
     damage = attacker.atkCoeff + item_used.power
