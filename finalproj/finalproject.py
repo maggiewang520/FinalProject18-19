@@ -276,7 +276,7 @@ call = Item('call out for scamming fans', 'attack', 10, 1)
 twit = Item('taking it to twitter', 'attack', 6, 2)
 
 fake = Item('fake apology', 'defense', 4, 2)
-disapp = Item('disappear off the internet', 'defense', 6, 1)
+disapp = Item('disappear off the internet', 'defense', 7, 1)
 exc = Item('making bad excuses', 'defense', 6, 2)
 proof = Item('disproving rumors with proof', 'defense', 10, 1)
 
@@ -301,7 +301,7 @@ def display_items():
 def which_one( choice1, choice2, atk_or_def ):
     ### this function allows the player to choose between pairs of attacks and defenses based on statistics of the items ###
     print(f"your two choices are {choice1.name} and {choice2.name}")
-    time.sleep(3)
+    time.sleep(2.5)
     choice1.showstats()
     time.sleep(2)
     choice2.showstats()
@@ -352,6 +352,7 @@ time.sleep(1)
 which_one( call, twit, 'attack')
 time.sleep(3)
 print(f"now we are moving on to the defense items")
+print()
 time.sleep(2)
 which_one( fake, disapp, 'defense')
 time.sleep(3)
@@ -443,7 +444,7 @@ def enemy_use_item( attacker, opponent ):
 def ally_attack( attacker, opponent ):
     ### this function allows the player to choose whether or not to regularly attack the enemy and attacks them ###
   print()
-  attack_or_not = input(f"would you like for {attacker.name} to attack {opponent.name}?")
+  attack_or_not = input(f"would you like for {attacker.name} to attack {opponent.name}? ")
   time.sleep(2)
   print()
   if attack_or_not == 'yes':
@@ -495,7 +496,6 @@ def enemy_attack( attacker, opponent ):
     print(f"the amount of damage done to {opponent} was {dmg} health points")
   time.sleep(2)
   print(f"the resulting health of {opponent.name} is {opponent.health}")
-  print()
   time.sleep(3)
   print()
   enemy_use_item( attacker, opponent )
