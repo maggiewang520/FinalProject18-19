@@ -616,7 +616,7 @@ def battle( ally, enemy ):
       )
     if ally.health <= 0:
       num_lost += 1
-      print(f"sorry, you lost. you've lost {num_lost} game(s) so far")
+      print(f"𝕠𝕠𝕗, you just took a 🅵🅰🆃 🅻. you've lost {num_lost} game(s) so far")
     if enemy.health <= 0:
       num_won += 1
       print(f"congrats! you won battle {game_num + 1}! you have won {num_won} battles so far")
@@ -637,7 +637,7 @@ def exit_game():
     ### this function is used when the player has won 3 games or the computer has won 3 games, because the final winnter has been determined at this point ###
     if num_won == 3:
         print()
-        print(f"congradulations! you won!")
+        print(f"congradulations! you won! you escaped LA! ")
     else:
         print(f"unfortunately, you lost. better luck next time...")
     print()
