@@ -19,7 +19,3 @@ n/a
 ## Flowchart
 
 https://drive.google.com/drive/folders/1lz51J5oX5W3P7RmnohSrwmRM8-yPo8vU?usp=sharing
-
-## Presentation
-
-https://docs.google.com/presentation/d/1rXv1imVLkL268tE2p7jIdr4degjco2HxJUoY_RhOPcE/edit?usp=sharing
