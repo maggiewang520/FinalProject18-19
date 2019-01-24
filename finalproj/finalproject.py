@@ -270,15 +270,15 @@ class Item():
 
     __repr__ = __str__
 
-ds = Item('diss track', 'ąɬɬąƈƙ', 16, 2)
-exp = Item('expose for racism', 'ąɬɬąƈƙ', 30, 1)
-call = Item('call out for scamming fans', 'ąɬɬąƈƙ', 20, 1)
-twit = Item('taking it to twitter', 'ąɬɬąƈƙ', 10, 2)
+ds = Item('diss track', 'attack', 16, 2)
+exp = Item('expose for racism', 'attack', 30, 1)
+call = Item('call out for scamming fans', 'attack', 20, 1)
+twit = Item('taking it to twitter', 'attack', 10, 2)
 
-fake = Item('fake apology', 'd̾e̾f̾e̾n̾s̾e̾', 4, 2)
-disapp = Item('disappear off the internet', 'd̾e̾f̾e̾n̾s̾e̾', 7, 1)
-exc = Item('making bad excuses', 'd̾e̾f̾e̾n̾s̾e̾', 6, 2)
-proof = Item('disproving rumors with proof', 'd̾e̾f̾e̾n̾s̾e̾', 10, 1)
+fake = Item('fake apology', 'defense', 4, 2)
+disapp = Item('disappear off the internet', 'defense', 7, 1)
+exc = Item('making bad excuses', 'defense', 6, 2)
+proof = Item('disproving rumors with proof', 'defense', 10, 1)
 
 avail_attacks = [ ds, exp, call, twit ]
 avail_defenses = [ fake, disapp, exc, proof ]
