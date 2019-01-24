@@ -397,12 +397,12 @@ game_num = 0
 
 def enemy_use_item( attacker, opponent ):
     ### this function randomly decides if the enemy will use a special item or not, and uses it if yes ###
-  coin = [ 'heads', 'tails', 'tails', 'tails' ]
+  coin = [ 'heads', 'tails', 'tails' ]
   use_or_not = random.choice(coin)
   time.sleep(2)
   if use_or_not == 'heads':
     print(f"ｏｏｆ, {attacker.name} has decided to use a 𝔰𝔭𝔢𝔠𝔦𝔞𝔩 𝔦𝔱𝔢𝔪")
-    all_items_to_avail = [ your_attacks[0], your_attacks[1], your_defenses[0], your_defenses[1] ]
+    all_items_to_avail = [ avail_attacks[0], avail_attacks[1], avail_defenses[0], avail_defenses[1] ]
     enemy_item_used = random.choice(all_items_to_avail)
     time.sleep(2)
     print()
