@@ -3,12 +3,12 @@ import random
 
 ## introduction to game
 
-print ( "welcome! to Maggie's final project! ")
+print ( "welcome to Maggie's final project! ")
 print()
 time.sleep(2)
-print('in a short moment, you will be thrusted into the hell that is LA')
+print('in a short moment, you will be thrusted into the 🅷🅴🅻🅻 that is LA')
 time.sleep(2)
-print("in order to escape, you will have to collect allies and win the fight at the end")
+print("in order to escape, you will have to collect allies and win the ɔıdǝ fight at the end")
 time.sleep(2)
 print()
 print( "good luck, you're gonna need it")
@@ -107,20 +107,20 @@ class Celeb(Fighter):
         print(f" - net worth: {self.networth}")
         print()
 
-ksi = Youtuber( 'KSI', 'the devil himself', 50, 10, 1, 20000000)
-lpaul = Youtuber( 'Logan Paul', 'chungus', 60, 9, 2, 19000000)
+ksi = Youtuber( 'KSI', '(っ◔◡◔)っ ♥ the devil himself ♥', 50, 10, 1, 20000000)
+lpaul = Youtuber( 'Logan Paul', 'ⓒⓗⓤⓝⓖⓤⓢ', 60, 9, 2, 19000000)
 
-jpaul = Youtuber( 'Jake Paul', 'chungus jr.', 70, 8, 1, 18000000)
-shane = Youtuber( 'Shane Dawson', 'illuminati himself', 60, 9, 2, 20000000)
+jpaul = Youtuber( 'Jake Paul', 'ⓒⓗⓤⓝⓖⓤⓢ jr.', 70, 8, 1, 18000000)
+shane = Youtuber( 'Shane Dawson', 'ɪʟʟᴜᴍɪɴᴀᴛɪ ʜɪᴍꜱᴇʟꜰ', 60, 9, 2, 20000000)
 
-pew = Youtuber( 'Pewdiepie', 'swedish lasagna', 90, 11, 2, 80000000)
-tseries = Youtuber( 'T-Series', 't-gay', 80, 10, 3, 79000000)
+pew = Youtuber( 'Pewdiepie', 'ｍｅｍｅ👏 ｒｅｖｉｅｗ👏', 90, 11, 2, 80000000)
+tseries = Youtuber( 'T-Series', 't-『g』『a』『y』', 80, 10, 3, 79000000)
 
-jstar = Youtuber( 'Jeffree Star', 'inhuman', 50, 9, 2, 12000000)
-jcharles = Youtuber( 'James Charles', 'sister', 60, 8, 2, 13000000)
+jstar = Youtuber( 'Jeffree Star', 'unavailable', 50, 9, 2, 12000000)
+jcharles = Youtuber( 'James Charles', 'shister', 60, 8, 2, 13000000)
 
 kimk = Celeb( 'Kim Kardashian', 'birth giver', 60, 9, 2, 350000000)
-kylie = Celeb( 'Kylie Jenner', 'birth giver 3000', 70, 8, 1, 900000000)
+kylie = Celeb( 'Kylie Jenner', 'birth giver 𝟛𝟘𝟘𝟘', 70, 8, 1, 900000000)
 
 allies = []
 enemies = []
@@ -135,7 +135,7 @@ dests = {
     'team 10 house': [jpaul, shane],
     'supreme store': [ksi, lpaul],
     'sephora': [jstar, jcharles],
-    'jenner house': [kimk, kylie],
+    'kardashian house': [kimk, kylie],
     'hotel': [pew, tseries]
      }
 
@@ -164,7 +164,7 @@ def whereToYeet( alldests ):
         dest = input(f"please choose a valid destination: " )
     time.sleep(1)
     print()
-    print(f"okay, we are yeeting to {dest} now.")
+    print(f"okay, we are ʏᴇᴇᴛɪɴɢ to {dest} now.")
     available_dests.remove(dest)
     time.sleep(1)
     for x in range (0,3):
@@ -216,9 +216,9 @@ def chooseAlly( place ):
         yourenemy = dests[place][0]
         enemies.append(dests[place][0])
     print()
-    print(f"{yourally} is now on your side and will fight for you!")
+    print(f"{yourally} is now on your side and will fight for you")
     time.sleep(1)
-    print(f"and {yourenemy} is now against you and aspires to destroy you in the final battle")
+    print(f"and {yourenemy} is now against you and aspires to 🄳🄴🅂🅃🅁🄾🅈 you ")
     print()
     time.sleep(2)
     displayTeams()
@@ -270,15 +270,15 @@ class Item():
 
     __repr__ = __str__
 
-ds = Item('diss track', 'attack', 10, 2)
-exp = Item('expose for racism', 'attack', 18, 1)
-call = Item('call out for scamming fans', 'attack', 10, 1)
-twit = Item('taking it to twitter', 'attack', 6, 2)
+ds = Item('diss track', 'ąɬɬąƈƙ', 10, 2)
+exp = Item('expose for racism', 'ąɬɬąƈƙ', 18, 1)
+call = Item('call out for scamming fans', 'ąɬɬąƈƙ', 10, 1)
+twit = Item('taking it to twitter', 'ąɬɬąƈƙ', 6, 2)
 
-fake = Item('fake apology', 'defense', 4, 2)
-disapp = Item('disappear off the internet', 'defense', 7, 1)
-exc = Item('making bad excuses', 'defense', 6, 2)
-proof = Item('disproving rumors with proof', 'defense', 10, 1)
+fake = Item('fake apology', 'd̾e̾f̾e̾n̾s̾e̾', 4, 2)
+disapp = Item('disappear off the internet', 'd̾e̾f̾e̾n̾s̾e̾', 7, 1)
+exc = Item('making bad excuses', 'd̾e̾f̾e̾n̾s̾e̾', 6, 2)
+proof = Item('disproving rumors with proof', 'd̾e̾f̾e̾n̾s̾e̾', 10, 1)
 
 avail_attacks = [ ds, exp, call, twit ]
 avail_defenses = [ fake, disapp, exc, proof ]
@@ -388,7 +388,7 @@ ready = input(f"are you ready to begin the battle?")
 if ready == 'yes':
     print("of course you are. let us begin")
 else:
-    print("too bad, you have no choice. i can't watch you rot here in LA")
+    print("too bad, you have no choice. ")
 
 num_won = 0
 num_lost = 0
@@ -400,7 +400,7 @@ def enemy_use_item( attacker, opponent ):
   use_or_not = random.choice(coin)
   time.sleep(2)
   if use_or_not == 'heads':
-    print(f"oof, {attacker.name} has decided to use a special item")
+    print(f"ｏｏｆ, {attacker.name} has decided to use a 𝔰𝔭𝔢𝔠𝔦𝔞𝔩 𝔦𝔱𝔢𝔪")
     all_items_to_avail = [ your_attacks[0], your_attacks[1], your_defenses[0], your_defenses[1] ]
     enemy_item_used = random.choice(all_items_to_avail)
     time.sleep(2)
@@ -448,7 +448,7 @@ def ally_attack( attacker, opponent ):
   time.sleep(2)
   print()
   if attack_or_not == 'yes':
-    print(f"{attacker.name} has attacked {opponent.name} with a power of {attacker.atkCoeff}!")
+    print(f"{attacker.name} has ⓐⓣⓣⓐⓒⓚed  {opponent.name} with a power of {attacker.atkCoeff}!")
     time.sleep(3)
     if opponent.health >= 20:
       print(f"{opponent.name} still had ample health left so they were able to use their defense power of {opponent.defCoeff}")
@@ -645,6 +645,16 @@ def exit_game():
     print(f"thank you very much for playing")
     time.sleep(1)
     print(f"i hope you enjoyed your time. bye!")
+    print()
+    time.sleep(1)
+    print("wait... one more thing...")
+    print()
+    print()
+    print()
+    print()
+    print()
+    time.sleep(3)
+    print("[̲̅s][̲̅u][̲̅b][̲̅s][̲̅c][̲̅r][̲̅i][̲̅b][̲̅e] [̲̅t][̲̅o] [̲̅p][̲̅e][̲̅w][̲̅d][̲̅i][̲̅e][̲̅p][̲̅i][̲̅e]")
 
 while True:
   battle( allies[game_num], enemies[game_num])
