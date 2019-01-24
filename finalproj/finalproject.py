@@ -325,7 +325,6 @@ def which_one( choice1, choice2, atk_or_def ):
             your_defenses.append(choice2)
             avail_defenses.remove(choice2)
     time.sleep(2)
-    display_items()
 
 print(f"----------------------------------------------------------------------")
 print()
@@ -361,6 +360,8 @@ print(f"next pair of defense items")
 time.sleep(1)
 which_one( exc, proof, 'defense')
 print()
+time.sleep(2)
+display_items()
 time.sleep(5)
 
 ## final battle
