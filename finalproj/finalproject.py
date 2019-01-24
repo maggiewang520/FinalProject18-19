@@ -110,11 +110,11 @@ class Celeb(Fighter):
 ksi = Youtuber( 'KSI', '(っ◔◡◔)っ ♥ the devil himself ♥', 50, 10, 1, 20000000)
 lpaul = Youtuber( 'Logan Paul', 'ⓒⓗⓤⓝⓖⓤⓢ', 60, 9, 2, 19000000)
 
-jpaul = Youtuber( 'Jake Paul', 'ⓒⓗⓤⓝⓖⓤⓢ jr.', 70, 8, 1, 18000000)
-shane = Youtuber( 'Shane Dawson', 'ɪʟʟᴜᴍɪɴᴀᴛɪ ʜɪᴍꜱᴇʟꜰ', 60, 9, 2, 20000000)
+jpaul = Youtuber( 'Jake Paul', 'ⓒⓗⓤⓝⓖⓤⓢ jr.', 70, 8, 10, 18000000)
+shane = Youtuber( 'Shane Dawson', 'ɪʟʟᴜᴍɪɴᴀᴛɪ ʜɪᴍꜱᴇʟꜰ', 60, 11, 2, 20000000)
 
-pew = Youtuber( 'Pewdiepie', 'ｍｅｍｅ👏 ｒｅｖｉｅｗ👏', 90, 11, 2, 80000000)
-tseries = Youtuber( 'T-Series', 't-『g』『a』『y』', 80, 10, 3, 79000000)
+pew = Youtuber( 'Pewdiepie', 'ｍｅｍｅ👏 ｒｅｖｉｅｗ👏', 90, 14, 2, 80000000)
+tseries = Youtuber( 'T-Series', 't-『g』『a』『y』', 80, 15, 3, 79000000)
 
 jstar = Youtuber( 'Jeffree Star', 'unavailable', 50, 9, 2, 12000000)
 jcharles = Youtuber( 'James Charles', 'shister', 60, 8, 2, 13000000)
@@ -270,10 +270,10 @@ class Item():
 
     __repr__ = __str__
 
-ds = Item('diss track', 'ąɬɬąƈƙ', 10, 2)
-exp = Item('expose for racism', 'ąɬɬąƈƙ', 18, 1)
-call = Item('call out for scamming fans', 'ąɬɬąƈƙ', 10, 1)
-twit = Item('taking it to twitter', 'ąɬɬąƈƙ', 6, 2)
+ds = Item('diss track', 'ąɬɬąƈƙ', 16, 2)
+exp = Item('expose for racism', 'ąɬɬąƈƙ', 30, 1)
+call = Item('call out for scamming fans', 'ąɬɬąƈƙ', 20, 1)
+twit = Item('taking it to twitter', 'ąɬɬąƈƙ', 10, 2)
 
 fake = Item('fake apology', 'd̾e̾f̾e̾n̾s̾e̾', 4, 2)
 disapp = Item('disappear off the internet', 'd̾e̾f̾e̾n̾s̾e̾', 7, 1)
@@ -327,6 +327,7 @@ def which_one( choice1, choice2, atk_or_def ):
     time.sleep(2)
     display_items()
 
+print(f"----------------------------------------------------------------------")
 print()
 print(f"well done, you have chosen well.")
 time.sleep(2)
@@ -586,6 +587,8 @@ def battle( ally, enemy ):
     global game_num
     global num_lost
 
+    print(f"----------------------------------------------------------------------")
+    print()
     print(f"welcome to battle {game_num + 1}!")
     print()
     time.sleep(2)
