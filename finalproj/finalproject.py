@@ -107,20 +107,20 @@ class Celeb(Fighter):
         print(f" - net worth: {self.networth}")
         print()
 
-ksi = Youtuber( 'KSI', '(っ◔◡◔)っ ♥ the devil himself ♥', 50, 10, 1, 20000000)
-lpaul = Youtuber( 'Logan Paul', 'ⓒⓗⓤⓝⓖⓤⓢ', 60, 9, 2, 19000000)
+ksi = Youtuber( 'KSI', '(っ◔◡◔)っ ♥ the devil himself ♥', 35, 10, 1, 20000000)
+lpaul = Youtuber( 'Logan Paul', 'ⓒⓗⓤⓝⓖⓤⓢ', 40, 9, 2, 19000000)
 
-jpaul = Youtuber( 'Jake Paul', 'ⓒⓗⓤⓝⓖⓤⓢ jr.', 70, 8, 10, 18000000)
-shane = Youtuber( 'Shane Dawson', 'ɪʟʟᴜᴍɪɴᴀᴛɪ ʜɪᴍꜱᴇʟꜰ', 60, 11, 2, 20000000)
+jpaul = Youtuber( 'Jake Paul', 'ⓒⓗⓤⓝⓖⓤⓢ jr.', 50, 10, 3, 8000000)
+shane = Youtuber( 'Shane Dawson', 'ɪʟʟᴜᴍɪɴᴀᴛɪ ʜɪᴍꜱᴇʟꜰ', 45, 11, 2, 20000000)
 
-pew = Youtuber( 'Pewdiepie', 'ｍｅｍｅ👏 ｒｅｖｉｅｗ👏', 90, 14, 2, 80000000)
-tseries = Youtuber( 'T-Series', 't-『g』『a』『y』', 80, 15, 3, 79000000)
+pew = Youtuber( 'Pewdiepie', 'ｍｅｍｅ👏 ｒｅｖｉｅｗ👏', 90, 20, 4, 80000000)
+tseries = Youtuber( 'T-Series', 't-『g』『a』『y』', 80, 25, 5, 79000000)
 
-jstar = Youtuber( 'Jeffree Star', 'unavailable', 50, 9, 2, 12000000)
-jcharles = Youtuber( 'James Charles', 'shister', 60, 8, 2, 13000000)
+jstar = Youtuber( 'Jeffree Star', 'unavailable', 30, 11, 2, 12000000)
+jcharles = Youtuber( 'James Charles', 'shister', 40, 8, 2, 13000000)
 
-kimk = Celeb( 'Kim Kardashian', 'birth giver', 60, 9, 2, 350000000)
-kylie = Celeb( 'Kylie Jenner', 'birth giver 𝟛𝟘𝟘𝟘', 70, 8, 1, 900000000)
+kimk = Celeb( 'Kim Kardashian', 'birth giver', 50, 15, 2, 350000000)
+kylie = Celeb( 'Kylie Jenner', 'birth giver 𝟛𝟘𝟘𝟘', 45, 13, 1, 900000000)
 
 allies = []
 enemies = []
@@ -270,10 +270,10 @@ class Item():
 
     __repr__ = __str__
 
-ds = Item('diss track', 'attack', 16, 2)
-exp = Item('expose for racism', 'attack', 30, 1)
+ds = Item('diss track', 'attack', 17, 2)
+exp = Item('expose for racism', 'attack', 35, 1)
 call = Item('call out for scamming fans', 'attack', 20, 1)
-twit = Item('taking it to twitter', 'attack', 10, 2)
+twit = Item('taking it to twitter', 'attack', 11, 2)
 
 fake = Item('fake apology', 'defense', 4, 2)
 disapp = Item('disappear off the internet', 'defense', 7, 1)
@@ -423,7 +423,7 @@ def enemy_use_item( attacker, opponent ):
         print(f"{attacker.name} may no longer use this anymore" )
         all_items_to_avail.remove(enemy_item_used)
       else:
-        print(f"the remaining number of uses left for {enemy_item_used.name} is {enemy_item_used.use}")
+        print(f"{attacker.name} can now only use {enemy_item_used.name} {enemy_item_used.use} more time")
     elif enemy_item_used.itemtype == 'defense':
       print(f"since the item is a defense, {attacker.name} will now restore their health unconditionally with a level of {enemy_item_used.power}"  )
       print()
@@ -436,7 +436,7 @@ def enemy_use_item( attacker, opponent ):
         print(f"{attacker.name} may no longer use this item anymore" )
         all_items_to_avail.remove(enemy_item_used)
       else:
-        print(f"the remaining number of uses left for {enemy_item_used.name} is {enemy_item_used.use}")
+        print(f"{attacker.name} can now only use {enemy_item_used.name} {enemy_item_used.use} more time")
 
   else:
     print(f"{opponent} decided they are not going to use a special item. you are in luck")
@@ -464,7 +464,7 @@ def ally_attack( attacker, opponent ):
       opponent.health -= attacker.atkCoeff
       print()
       time.sleep(2)
-      print(f"the amount of damage done to {opponent} was {dmg} health points")
+      print(f"the amount of damage done to {opponent} was {attacker.atkCoeff} health points")
     time.sleep(2)
     print(f"the resulting health of {opponent.name} is {opponent.health}")
     print()
@@ -495,7 +495,7 @@ def enemy_attack( attacker, opponent ):
     opponent.health -= attacker.atkCoeff
     print()
     time.sleep(3)
-    print(f"the amount of damage done to {opponent} was {dmg} health points")
+    print(f"the amount of damage done to {opponent} was {attacker.atkCoeff} health points")
   time.sleep(2)
   print(f"the resulting health of {opponent.name} is {opponent.health}")
   time.sleep(3)
@@ -613,17 +613,19 @@ def battle( ally, enemy ):
       ally_attack( ally, enemy )
       print(f"--------------------------------------"
       )
-      print(f"it is now {enemy.name}'s turn")
+      if enemy.health <= 0:
+        num_won += 1
+        print(f"congrats! you won battle {game_num + 1}! you have won {num_won} battles so far")
+        break
       time.sleep(2)
+      print(f"it is now {enemy.name}'s turn")
       enemy_attack( enemy, ally )
-      print(f"--------------------------------------"
-      )
-    if ally.health <= 0:
-      num_lost += 1
-      print(f"𝕠𝕠𝕗, you just took a 🅵🅰🆃 🅻. you've lost {num_lost} game(s) so far")
-    if enemy.health <= 0:
-      num_won += 1
-      print(f"congrats! you won battle {game_num + 1}! you have won {num_won} battles so far")
+      print(f"--------------------------------------")
+      if ally.health <= 0:
+        num_lost += 1
+        print(f"𝕠𝕠𝕗, you just took a 🅵🅰🆃 🅻. you've lost {num_lost} game(s) so far")
+        break
+
     game_num += 1
 
     time.sleep(1)
