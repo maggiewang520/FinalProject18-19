@@ -14,4 +14,4 @@ The 5 pairs of influencers will fight one another - and best 3 out of 5 battles 
 
 ## Citations
 
-no sources used (does Ms. Gerstein count?)
+n/a
