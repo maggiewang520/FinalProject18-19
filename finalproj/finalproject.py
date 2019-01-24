@@ -543,6 +543,8 @@ def use_item( attacker, opponent, item_used ):
     else:
       print(f"the remaining number of uses left for {item_used.name} is {item_used.use}")
 
+all_items_to_use = [ your_attacks[0].name, your_attacks[1].name, your_defenses[0].name, your_defenses[1].name ]
+
 def use_item_or_not( attacker, opponent ):
     ### this function allows the player to choose whether or not to use a special item and which one they would like to use ###
   use_item_question = input(f"now... would you like to use a special item in your inventory? keep in mind that your special items have limited uses   ")
@@ -554,28 +556,35 @@ def use_item_or_not( attacker, opponent ):
     time.sleep(2)
     which_item_use = input(f"which item in available in your inventory would you like to use? ")
     time.sleep(2)
-    all_items_to_use = [ your_attacks[0].name, your_attacks[1].name, your_defenses[0].name, your_defenses[1].name ]
     while which_item_use not in all_items_to_use :
       which_item_use = input(f"please pick a valid item ")
     if which_item_use == your_attacks[0].name:
       print(f"using {your_attacks[0]}...")
       time.sleep(1)
       print()
+      if your_attacks[0].use == 1:
+        all_items_to_use.remove(your_attacks[0].name)
       use_item( attacker, opponent, your_attacks[0] )
     elif which_item_use == your_attacks[1].name:
       print(f"using {your_attacks[1]}...")
       time.sleep(1)
       print()
+      if your_attacks[1].use == 1:
+        all_items_to_use.remove(your_attacks[1].name)
       use_item( attacker, opponent, your_attacks[1] )
     elif which_item_use == your_defenses[0].name:
       print(f"using {your_defenses[0]}...")
       time.sleep(1)
       print()
+      if your_defenses[0].use == 1:
+        all_items_to_use.remove(your_defenses[0].name)
       use_item( attacker, opponent, your_defenses[0] )
     elif which_item_use == your_defenses[1].name:
       print(f"using {your_defenses[0]}...")
       time.sleep(1)
       print()
+      if your_defenses[1].use == 1:
+        all_items_to_use.remove(your_defenses[1].name)
       use_item( attacker, opponent, your_defenses[1] )
   else:
     print()
