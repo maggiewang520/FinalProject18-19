@@ -640,7 +640,7 @@ def battle( ally, enemy ):
     time.sleep(1)
     print()
     for x in range (0,5):
-      b = "Loading next game" + "." * x
+      b = "Loading" + "." * x
       print (b, end="\r")
       time.sleep(1)
     print()
